@@ -51,10 +51,8 @@ module.exports = {
             ]
         },
 
-        stylus: {
-            default: 'app/stylus/default.styl',
-            dark: 'app/stylus/dark.styl'
-        },
+        sass: 'app/scss/init.scss',
+        sasses: 'app/scss/**/*.scss',
 
         html: 'app/index.html'
     },

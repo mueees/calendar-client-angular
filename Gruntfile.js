@@ -1,21 +1,10 @@
 module.exports = function (grunt) {
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-html-build');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-jsvalidate');
-    grunt.loadNpmTasks('grunt-conventional-changelog');
-    grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-ngmin');
-    grunt.loadNpmTasks('grunt-html2js');
-    grunt.loadNpmTasks('grunt-svg-sprite');
-    grunt.loadNpmTasks('grunt-spritesmith');
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
 
     // Uses to change the root name oldPrefix of a long folder name to newPrefix
     var changeRootFolder = function (names, oldPrefix, newPrefix) {
@@ -50,21 +39,13 @@ module.exports = function (grunt) {
     var taskConfig = {
         pkg: grunt.file.readJSON("package.json"),
         html2js: {
-            app: {
+            dev: {
                 options: {
                     base: '.',
                     module: 'calendar.templates'
                 },
                 src: ['<%= app_files.js.templates %>'],
                 dest: '<%= build_dir %>/app/scripts/calendar.templates.js'
-            },
-            compile: {
-                options: {
-                    base: '.',
-                    module: 'templates-app'
-                },
-                src: ['<%= app_files.js.templates %>'],
-                dest: '<%= compile_dir %>/scripts/temp/calendar.templates.js'
             }
         },
         copy: {
@@ -124,35 +105,6 @@ module.exports = function (grunt) {
                         flatten: true
                     }
                 ]
-            },
-            compile_assets: {
-                files: [
-                    {
-                        src: ['**'],
-                        dest: '<%= compile_dir %>/assets',
-                        cwd: '<%= build_dir %>/app/assets',
-                        expand: true
-                    }
-                ]
-            }
-        },
-        stylus: {
-            dev: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    '<%= build_dir %>/app/assets/css/default-<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.stylus.default %>',
-                    '<%= build_dir %>/app/assets/css/dark-<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.stylus.dark %>'
-                }
-            },
-            compile: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'app/assets/css/default-<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.stylus.default %>'
-                }
             }
         },
         clean: {
@@ -161,15 +113,7 @@ module.exports = function (grunt) {
             ],
             assets_build: [
                 '<%= build_dir %>/app/assets'
-            ],
-            compile: '<%= compile_dir %>',
-            compile_script_temp: '<%= compile_dir_scripts_temp %>'
-        },
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js',
-                background: false
-            }
+            ]
         },
         jshint: {
             src: [
@@ -207,52 +151,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        concat: {
-            //javascript files
-            compile_vendor: {
-                src: [
-                    '<%= vendor_files.js %>'
-                ],
-                dest: '<%= compile_dir %>/scripts/temp/vendor_templates.js'
-            },
-            compile_pages: {
-                src: [
-                    'module.prefix',
-                    '<%= app_files.js.pages %>',
-                    'module.suffix'
-                ],
-                dest: '<%= compile_dir %>/scripts/temp/main.js'
-            },
-            compile_core: {
-                src: [
-                    'module.prefix',
-                    '<%= app_files.js.core %>',
-                    'module.suffix'
-                ],
-                dest: '<%= compile_dir %>/scripts/temp/core.js'
-            },
-            compile_app: {
-                options: {},
-                src: [
-                    'module.prefix',
-                    '<%= app_files.js.app %>',
-                    'module.suffix'
-                ],
-                dest: '<%= compile_dir %>/scripts/temp/app.js'
-            },
-
-            compile_js: {
-                options: {},
-                src: [
-                    '<%= concat.compile_vendor.dest %>',
-                    '<%= html2js.compile.dest %>',
-                    '<%= concat.compile_core.dest %>',
-                    '<%= concat.compile_pages.dest %>',
-                    '<%= concat.compile_app.dest %>'
-                ],
-                dest: '<%= compile_dir %>/scripts/<%= pkg.name %>-<%= pkg.version %>.js'
-            }
-        },
         htmlbuild: {
             dev: {
                 src: 'app/index.html',
@@ -264,50 +162,11 @@ module.exports = function (grunt) {
                     scripts: {
                         libs: changeRootFolder(userConfig.vendor_files.js, 'app/vendor', '<%= build_dir %>/app/vendor'),
                         templates: '<%= build_dir %>/app/scripts/calendar.templates.js',
-                        /*main: changeRootFolder(userConfig.app_files.js.main, 'app/scripts', '<%= build_dir %>/app/scripts'),*/
                         app: changeRootFolder(userConfig.app_files.js.app, 'app/scripts', '<%= build_dir %>/app/scripts')
                     },
                     styles: {
-                        start: [
-                            '<%= build_dir %>/app/assets/css/start.css'
-                        ],
-                        vendor: [
-                            '<%= build_dir %>/app/assets/css/vendor/*.css'
-                        ],
-                        app: [
-                            '<%= build_dir %>/app/assets/css/*.css',
-                            '!<%= build_dir %>/app/assets/css/start.css'
-                        ]
-                    }
-                }
-            },
-            compile: {
-                src: 'app/index.html',
-                dest: '<%= compile_dir %>/',
-                options: {
-                    beautify: true,
-                    prefix: '.',
-                    relative: true,
-                    scripts: {
-                        templates: [],
-                        libs: [],
-                        pages: [
-                            '<%= concat.compile_js.dest %>'
-                        ],
-                        core: [],
-                        app: []
-                    },
-                    styles: {
-                        start: [
-                            '<%= compile_dir %>/assets/css/start.css'
-                        ],
-                        vendor: [
-                            '<%= compile_dir %>/assets/css/vendor/*.css'
-                        ],
-                        app: [
-                            '<%= compile_dir %>/assets/css/*.css',
-                            '!<%= compile_dir %>/assets/css/start.css'
-                        ]
+                        vendor: '<%= build_dir %>/app/assets/css/vendor/*.css',
+                        app: '<%= build_dir %>/app/assets/css/*.css'
                     }
                 }
             }
@@ -315,19 +174,8 @@ module.exports = function (grunt) {
         watch: {
             app_js: {
                 files: [
-                    '<%= app_files.js.app %>'
-                ],
-                tasks: ['jshint:src', 'copy:app_js']
-            },
-            core_js: {
-                files: [
-                    '<%= app_files.js.core %>'
-                ],
-                tasks: ['jshint:src', 'copy:app_js']
-            },
-            core_pages: {
-                files: [
-                    '<%= app_files.js.pages %>'
+                    '<%= app_files.js.app %>',
+                    '<%= app_files.js.main %>'
                 ],
                 tasks: ['jshint:src', 'copy:app_js']
             },
@@ -339,11 +187,7 @@ module.exports = function (grunt) {
             },
             assets: {
                 files: ['app/assets/**'],
-                tasks: ['clean:assets_build', 'copy:app_assets', 'copy:vendor_css', 'copy:vendor_fonts', 'svg_sprite:dev', 'sprite:dev', 'stylus:dev', 'htmlbuild:dev']
-            },
-            stylus: {
-                files: ['app/**/*.styl'],
-                tasks: ['stylus:dev']
+                tasks: ['clean:assets_build', 'copy:app_assets', 'copy:vendor_css', 'copy:vendor_fonts', 'htmlbuild:dev']
             },
             gruntfile: {
                 files: 'Gruntfile.js',
@@ -360,67 +204,38 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js.templates %>'
                 ],
-                tasks: ['html2js:app']
-            }
-        },
-        uglify: {
-            compile: {
-                options: {},
-                files: {
-                    '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'
-                }
-            }
-        },
-        svg_sprite: {
-            dev: {
-                expand: true,
-                cwd: '.',
-                src: ['app/source/svg/*.svg'],
-                dest: '<%= build_dir %>/app/assets/svg',
-                options: {
-                    mode: {
-                        symbol: {
-                            sprite: 'svg-sprite.svg',
-                            render: {
-                                css: false
-                            },
-                            bust: false,
-                            example: true
-                        }
-                    },
-                    svg: {
-                        xmlDeclaration: false,
-                        dimensionAttributes: false
-                    },
-                    shape: {
-                        id: {
-                            generator: function (path) {
-                                var array = path.split('\\');
-                                var fileName = array[array.length - 1];
-                                var fileNameArray = fileName.split('.');
-                                return 'svg-icon-' + fileNameArray[0];
-                            }
-                        },
-                        dest: 'items'
-                    }
-                }
-            }
-        },
-        sprite:{
-            dev: {
-                src: 'app/source/icon/*.png',
-                dest: '<%= build_dir %>/app/assets/img/sprite.png',
-                destCss: '<%= build_dir %>/app/assets/css/sprite.css'
+                tasks: ['html2js:dev']
+            },
+            sass: {
+                files: [
+                    '<%= app_files.sasses %>'
+                ],
+                tasks: ['sass:dev']
             }
         },
         sass: {
-            dist: {
+            dev: {
                 options: {
                     style: 'expanded'
                 },
                 files: {
-                    '<%= build_dir %>/app/assets/css/styles.css': '<%= srcDir %>/scss/init.scss'
+                    '<%= build_dir %>/app/assets/css/styles-<%= pkg.version %>.css': '<%= app_files.sass %>'
                 }
+            }
+        },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            dev: {
+                files: [
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: '.',
+                        src: '<%= build_dir %>/app/scripts/**/*.js'
+                    }
+                ]
             }
         }
     };
@@ -428,49 +243,27 @@ module.exports = function (grunt) {
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
     grunt.registerTask("dev", [
-        /*'karma',*/
+        'jsvalidate',
+        'jshint',
+
         'clean:build',
 
         'copy:app_js',
         'copy:app_assets',
-        'svg_sprite:dev',
-        'sprite:dev',
-        'stylus:dev',
+        'sass:dev',
 
-        /*copy vendor files to assets*/
         'copy:vendor_css',
         'copy:vendor_fonts',
         'copy:vendor_js',
 
-        'jsvalidate',
-        'jshint',
+        'ngAnnotate:dev',
 
-        'html2js:app',
+        'html2js:dev',
         'htmlbuild:dev'
     ]);
 
-    grunt.registerTask('compile', [
-        'karma',
-        'clean:compile',
-        'jsvalidate',
-        'jshint',
-        'stylus:compile',
-        'copy:compile_assets',
-        'html2js:compile',
-        'concat:compile_vendor',
-        'concat:compile_core',
-        'concat:compile_pages',
-        'concat:compile_app',
-        'concat:compile_js',
-        /*'uglify',*/
-        'htmlbuild:compile'
-        /*'clean:compile_script_temp'*/
-    ]);
-
     grunt.registerTask('debug', 'Main task for development', function () {
-        grunt.task.run('development');
+        grunt.task.run('dev');
         grunt.task.run('watch');
     });
-
-
 };
