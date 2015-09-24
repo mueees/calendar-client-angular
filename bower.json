@@ -1,0 +1,11 @@
+{
+  "name": "Calendar",
+  "dependencies": {
+    "angular": "1.4.6",
+    "angular-animate": "latest",
+    "angular-animate": "latest",
+    "bootstrap-sass": "latest",
+    "moment": "latest",
+    "angular-ui-router": "latest"
+  }
+}
