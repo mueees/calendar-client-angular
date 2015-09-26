@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.promo', [
+    angular.module('calendar.main', [
         'calendar.viewport',
         'ui.router'
     ]);

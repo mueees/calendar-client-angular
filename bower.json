@@ -7,6 +7,7 @@
     "bootstrap-sass": "latest",
     "moment": "latest",
     "lodash": "latest",
+    "restangular": "latest",
     "angular-ui-router": "latest"
   }
 }

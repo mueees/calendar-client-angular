@@ -64,6 +64,7 @@ module.exports = {
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/moment/moment.js',
             'app/bower_components/lodash/lodash.js',
+            'app/bower_components/restangular/dist/restangular.js',
             'app/vendor/components/mue.js'
         ],
         css: [

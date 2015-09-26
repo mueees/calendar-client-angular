@@ -1,5 +1,60 @@
 /*Shade color*/
 /*Fonts*/
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #e1eef3;
+  font-size: 14px;
+}
+
+.mue-icon + input {
+  padding: 6px 12px 6px 26px;
+}
+
+.form-group {
+  position: relative;
+}
+.form-group.mue-group-error .form-control {
+  border-color: #f84545;
+}
+.form-group.mue-group-warning .form-control {
+  border-color: #fad46b;
+}
+.form-group.mue-group-success .form-control {
+  border-color: #3eb5ac;
+}
+.form-group .form-control-icon {
+  position: relative;
+}
+.form-group .form-control-icon .mue-icon {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  color: #5e696d;
+}
+
+.form-control {
+  outline: none;
+  border: 1px solid #d6e1e5;
+  color: #5e696d;
+}
+.form-control:hover {
+  border-color: #b2c6cd;
+}
+.form-control:focus {
+  border-color: #02baf2;
+  box-shadow: none;
+}
+.form-control.mue-control-coral {
+  background: #d6e1e5;
+  color: #5e696d;
+}
+.form-control.mue-control-coral:hover {
+  background: #e1eef3;
+}
+.form-control.mue-control-coral:focus {
+  background: white;
+}
+
 .btn.btn-action:hover {
   padding: 7px 12px 5px;
 }
@@ -204,6 +259,25 @@
 }
 .btn-clear:active {
   color: white;
+}
+
+.mue-nav {
+  color: #93a4aa;
+}
+.mue-nav li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 15px;
+}
+.mue-nav li a {
+  color: #93a4aa;
+}
+.mue-nav li a:hover {
+  color: #b2c6cd;
+  text-decoration: none;
+}
+.mue-nav li.active a {
+  color: #fad46b;
 }
 
 .mue-panel {
@@ -425,10 +499,20 @@ mue-calendar-manager .mue-list-group-flat .list-group-item {
   cursor: pointer;
 }
 
-header {
-  color: red;
-  background: yellow;
-  font-size: 12px;
+mue-header {
+  padding: 9px 15px 0 20px;
+  border-radius: 5px;
+  background: #364347;
+  height: 60px;
+  display: block;
+}
+mue-header .mue-brand {
+  float: left;
+  color: #d6e1e5;
+  font-size: 30px;
+}
+mue-header .mue-header-menu {
+  margin: 11px 0 0 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
