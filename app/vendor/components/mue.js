@@ -5,40 +5,163 @@
 angular.module('mue.template').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('src/core/components/calendar-manager/calendar-manager.directive.html',
+    "<div class=\"mue-calendar-manager\">\n" +
+    "    <div class=\"panel mue-panel mue-panel-wide mue-panel-lagoon\">\n" +
+    "        <div class=\"panel-heading\">\n" +
+    "            {{title}}\n" +
+    "        </div>\n" +
+    "        <div class=\"panel-body\">\n" +
+    "            <div class=\"list-group mue-list-group mue-list-group-flat mue-list-group-dark\">\n" +
+    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
+    "                    <div class=\"pull-left\">\n" +
+    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"pull-right\">\n" +
+    "                        <button class=\"btn btn-clear\">\n" +
+    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
+    "                        </button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"mue-list-group-content\">\n" +
+    "                        Birthday\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
+    "                    <div class=\"pull-left\">\n" +
+    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"pull-right\">\n" +
+    "                        <button class=\"btn btn-clear\" >\n" +
+    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
+    "                        </button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"mue-list-group-content\">\n" +
+    "                        Event\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
+    "                    <div class=\"pull-left\">\n" +
+    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"pull-right\">\n" +
+    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
+    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
+    "                        </button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"mue-list-group-content\">\n" +
+    "                        Weeding\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
+    "                    <div class=\"pull-left\">\n" +
+    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"pull-right\">\n" +
+    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
+    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
+    "                        </button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"mue-list-group-content\">\n" +
+    "                        Work\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
+    "                    <div class=\"pull-left\">\n" +
+    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"pull-right\">\n" +
+    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
+    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
+    "                        </button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"mue-list-group-content\">\n" +
+    "                        Holidays\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <ul class=\"mue-toolbar-action mue-toolbar-action-horizontal mue-toolbar-action-dark\">\n" +
+    "                <li>\n" +
+    "                    <button data-link=\"new\" class=\"btn btn-clear\">\n" +
+    "                        <i class=\"fa fa-plus mue-icon\"></i>\n" +
+    "                    </button>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <button data-link=\"select\" class=\"btn btn-clear\">\n" +
+    "                        <i class=\"fa fa-check-square-o mue-icon\"></i>\n" +
+    "                    </button>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <button data-link=\"unSelect\" class=\"btn btn-clear\">\n" +
+    "                        <i class=\"fa fa-square-o mue-icon\"></i>\n" +
+    "                    </button>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"calendar-manager-footer\"></div>\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('src/core/components/date-switcher/date-switcher.directive.html',
-    "<button class=\"btn btn-lagoon mue-date-switcher-today\" ng-click=\"today()\" ng-disabled=\"isDisabled()\">Today</button>\r" +
+    "<button class=\"btn btn-lagoon mue-date-switcher-today\" ng-click=\"today()\" ng-disabled=\"isDisabled()\">Today</button>\n" +
     "\n" +
-    "\r" +
-    "\n" +
-    "<div class=\"btn-group mue-date-switcher-navigation\">\r" +
-    "\n" +
-    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"prev()\"><</button>\r" +
-    "\n" +
-    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"next()\">></button>\r" +
-    "\n" +
-    "</div>\r" +
-    "\n" +
-    "\r" +
+    "<div class=\"btn-group mue-date-switcher-navigation\">\n" +
+    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"prev()\"><</button>\n" +
+    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"next()\">></button>\n" +
+    "</div>\n" +
     "\n" +
     "<mue-date-viewer mue-config=\"dateViewerConfiguration\"></mue-date-viewer>"
   );
 
 
   $templateCache.put('src/core/components/date-viewer/date-viewer.directive.html',
-    "<div ng-switch=\"mueConfig.type\">\r" +
+    "<div ng-switch=\"mueConfig.type\">\n" +
+    "    <span ng-switch-when=\"1\">\n" +
+    "        {{mueConfig.start | date:'dd MMMM yyyy'}}\n" +
+    "    </span>\n" +
+    "    <span ng-switch-when=\"2\">\n" +
+    "        {{mueConfig.start | date:'dd MMMM'}} - {{mueConfig.end | date:'dd MMMM'}}, {{mueConfig.end | date:'yyyy'}}\n" +
+    "    </span>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('src/core/components/list-group/list-group.directive.html',
+    "<div class=\"list-group mue-list-group \" ng-class=\"{'mue-list-group-flat': mueConfig.ui.flat, 'mue-list-group-dark': mueConfig.ui.dark}\">\n" +
+    "    <div ng-click=\"mueConfig.clickHandler(item)\" ng-class=\"{active: item.active}\" ng-repeat=\"item in mueConfig.items\" class=\"list-group-item list-group-item-lagoon\">\n" +
+    "        <div class=\"pull-left\">\n" +
+    "            <i class=\"fa fa-{{item.icon}} mue-icon\"></i>\n" +
+    "        </div>\n" +
+    "        <div class=\"pull-right\">\n" +
+    "            <button ng-click=\"action.handler(item)\" ng-repeat=\"action in item.actions\" class=\"btn btn-clear\">\n" +
+    "                <i class=\"fa fa-{{action.icon}} mue-icon\"></i>\n" +
+    "            </button>\n" +
+    "        </div>\n" +
+    "        <div class=\"mue-list-group-content\">\n" +
+    "            {{item.text}}\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('src/core/components/login/login.directive.html',
+    "<div class=\"panel mue-panel mue-card mue-card-lagoon\">\n" +
+    "    <div class=\"panel-body\">\n" +
+    "        <div class=\"mue-card-icon\">\n" +
+    "            <i class=\"fa fa-calendar mue-icon\"></i>\n" +
+    "        </div>\n" +
     "\n" +
-    "    <span ng-switch-when=\"1\">\r" +
+    "        <h4 class=\"mue-card-title\">{{mueConfig.name || 'New Application'}}</h4>\n" +
     "\n" +
-    "        {{mueConfig.start | date:'dd MMMM yyyy'}}\r" +
+    "        <div class=\"mue-card-description\" ng-if=\"mueConfig.description\">\n" +
+    "            {{mueConfig.description}}\n" +
+    "        </div>\n" +
     "\n" +
-    "    </span>\r" +
-    "\n" +
-    "    <span ng-switch-when=\"2\">\r" +
-    "\n" +
-    "        {{mueConfig.start | date:'dd MMMM'}} - {{mueConfig.end | date:'dd MMMM'}}, {{mueConfig.end | date:'yyyy'}}\r" +
-    "\n" +
-    "    </span>\r" +
-    "\n" +
+    "        <button ng-click=\"login()\" class=\"btn btn-action btn-strawberry btn-block\">{{mueConfig.action || 'Login'}}\n" +
+    "        </button>\n" +
+    "    </div>\n" +
     "</div>"
   );
 
@@ -50,28 +173,490 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 }]);
 
 (function(){
-    angular.module('mue.date-switcher', [
+    angular.module('mue.core.calendar-manager', [
+        'mue.template'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.date-switcher', [
         'mue.template',
-        'mue.date-viewer'
+        'mue.core.date-viewer'
     ]);
 })();
 (function(){
-    angular.module('mue.date-viewer', [
+    angular.module('mue.core.date-viewer', [
         'mue.template'
     ]);
 })();
 (function(){
-    angular.module('mue.seed', [
+    angular.module('mue.core.list-group', [
         'mue.template'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.login', [
+        'mue.template',
+        'mue.core.security'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.seed', [
+        'mue.template'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.error-handler', [
+        'mue.template',
+        'angular-growl'
     ]);
 })();
 (function () {
     'use strict';
-    angular.module('mue.security', []);
+    angular.module('mue.core.resources', [
+        'restangular'
+    ]);
+})();
+
+(function () {
+    'use strict';
+    angular.module('mue.core.security', [
+        'ui.router',
+        'mue.core.user'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.user', [
+    ]);
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.error-handler').config(['$provide', function ($provide) {
+        // decorate angular $exceptionHandler service to intercept script errors
+        $provide.decorator('$exceptionHandler', ['$delegate', '$injector', function ($delegate, $injector) {
+            return function (exception, cause) {
+                $injector.get('rxScriptErrorHandler').handleScriptError(exception, cause);
+                $delegate(exception, cause);
+            };
+        }]);
+    }]);
+})();
+
+(function () {
+    'use strict';
+    angular.module('mue.core.error-handler').constant('MUE_ERROR_MESSAGES', {
+        httpDefaultError: 'An unexpected server communication error has occurred. Status: %s.',
+        httpNetworkError: 'Network communication error has occurred.',
+        scriptError: 'An unexpected script error has occurred.'
+    });
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.security').constant('MUE_AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        logoutFailed: 'auth-logout-failed',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    });
+})();
+
+(function () {
+    angular.module('mue.core.error-handler').factory('mueScriptErrorHandler', ['growl', 'MUE_ERROR_MESSAGES', function (growl, MUE_ERROR_MESSAGES) {
+        function handleScriptError(exception, cause) {
+            var message = MUE_ERROR_MESSAGES.scriptError;
+
+            if (_.isString(exception.message)) {
+                message += ' ' + exception.message;
+            }
+
+            growl.addErrorMessage(message);
+        }
+
+        return {
+            handleScriptError: handleScriptError
+        };
+    }]);
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.resources').factory('mueCommandResource', ['mueResource', function (mueResource) {
+        var CommandInstanceResource = function (resourceType) {
+            var _resource = mueResource.withSubUrlConfiguration(RX_RESOURCE_URLS.command, function (RestangularConfigurer) {
+
+            });
+        };
+
+        return {
+            create: function (resourceType) {
+                return new CommandInstanceResource(resourceType);
+            }
+        };
+    }]);
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.resources').factory('mueResource', ['Restangular', function (Restangular) {
+        return Restangular.withConfig(function (RestangularConfigurer) {
+            RestangularConfigurer.setBaseUrl('/api');
+        });
+    }]);
 })();
 /**
+ * @ngdoc service
+ * @name mueAuthentication
+ *
+ * @description
+ * The mueAuthentication service provides the login/logout functionality and
+ * ensures that a user gets authenticated before accessing the application.
+ *
+ * The service must be configured and injected into the application as early as possible,
+ * e.g. in the main module config/run block, before any UI route changes occur.
+ */
+(function () {
+    'use strict';
+    angular.module('mue.core.security').provider('mueAuthentication', function () {
+        var _loginState = null,
+            _appState = null;
+
+        /**
+         * @ngdoc method
+         * @name mueAuthenticationProvider#loginState
+         *
+         * @description
+         * This method is getter / setter.
+         *
+         * Returns the UI state for the login view when called without any parameters.
+         *
+         * Sets the UI state for the login view when called with parameters.
+         *
+         * @param {String} stateName A name of the UI state.
+         * @param {Object=} stateParams A map of parameters for the state.
+         *
+         * @return {Object} The UI state for the login view.
+         */
+        function loginState(stateName, stateParams) {
+            if (arguments.length) {
+                _loginState = {
+                    name: stateName,
+                    params: stateParams
+                };
+            }
+
+            return _loginState;
+        }
+
+        /**
+         * @ngdoc method
+         * @name mueAuthenticationProvider#appState
+         *
+         * @description
+         * This method is getter / setter.
+         *
+         * Returns the UI state to transition to after login when called without any parameters.
+         *
+         * Sets the UI state to transition to after login when called with parameters.
+         *
+         * @param {String|Object|Function} stateName A name of the UI state, a state descriptor, or a function
+         *                                           that returns either a state name of a state descriptor.
+         *                                           The state descriptor is an object with a 'name' and an optional
+         *                                           'params' properties.
+         * @param {Object=} stateParams A map of parameters for the UI state. Ignored if the stateName parameter is not
+         *                              a string.
+         *
+         * @return {Object} The UI state to transition to after login.
+         */
+        function appState(stateName, stateParams) {
+            if (arguments.length) {
+                if (_.isString(stateName)) {
+                    _appState = {
+                        name: stateName,
+                        params: stateParams
+                    };
+                } else if (_.isFunction(stateName)) {
+                    _appState = stateName;
+                } else if (_.isObject(stateName) && _.isString(stateName.name)) {
+                    _appState = stateName;
+                }
+            }
+
+            return _appState;
+        }
+
+        return {
+            loginState: loginState,
+            appState: appState,
+
+            $get: ['$state', '$rootScope', '$q', 'mueAuthUserResource', 'mueUserResource', 'mueSession', 'mueToken', 'MUE_AUTH_EVENTS', function ($state, $rootScope, $q, mueAuthUserResource, mueUserResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
+                if (!_loginState || !_loginState.name || !_appState) {
+                    throw new Error('mueAuthentication service has not been configured properly.');
+                }
+
+                var afterLoginState = _appState;
+
+                /**
+                 * @ngdoc method
+                 * @name mueAuthentication#login
+                 *
+                 * @description
+                 * Authenticates the user.
+                 */
+                function login() {
+                    return mueAuthUserResource.login();
+                }
+
+                /**
+                 * @ngdoc method
+                 * @name mueAuthentication#logout
+                 *
+                 * @description
+                 * Signs the user out of the application.
+                 *
+                 * @returns {Promise} A promise that will be resolved when a user is logged out, or if the logout failed.
+                 */
+                function logout() {
+                    var promise = rxAuthUserResource.logout();
+
+                    var _destroySession = function () {
+                        mueSession.destroy();
+                    };
+
+                    promise.then(_destroySession, _destroySession);
+
+                    return promise;
+                }
+
+                /**
+                 * @ngdoc method
+                 * @name rxAuthentication#initSession
+                 *
+                 * @description
+                 * Initializes session by loading details for current user.
+                 *
+                 * @returns {Promise} Returns a promise which will be resolved when session is initialized
+                 */
+                function initSession() {
+                    var deferred = $q.defer();
+
+                    if (mueSession.isAlive()) {
+                        deferred.resolve();
+                    } else {
+                        mueUserResource.getCurrentUser().then(function (user) {
+                            mueSession.create(user.plain());
+                            deferred.resolve();
+                        });
+                    }
+
+                    return deferred.promise;
+                }
+
+                function _loginSuccessHandler(data){
+                    mueToken.create(data.client_token);
+
+                    var targetState = afterLoginState;
+
+                    if (_.isFunction(targetState)) {
+                        targetState = targetState();
+                    }
+
+                    if (_.isString(targetState)) {
+                        targetState = {
+                            name: targetState
+                        };
+                    }
+
+                    $state.go(targetState.name, targetState.params);
+
+                    afterLoginState = _appState;
+                }
+
+                function _redirectToLoginState() {
+                    $state.go(_loginState.name, _loginState.params);
+                }
+
+                $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+                    if (toState && toState.name !== _loginState.name) {
+                        afterLoginState = {
+                            name: toState.name,
+                            params: toParams
+                        };
+                    }
+                });
+
+                $rootScope.$on(MUE_AUTH_EVENTS.notAuthenticated, function () {
+                    mueSession.destroy();
+                    _redirectToLoginState();
+                });
+
+                $rootScope.$on(MUE_AUTH_EVENTS.loginSuccess, _loginSuccessHandler);
+
+                function _onLogout() {
+                    mueToken.destroy();
+                    mueSession.destroy();
+
+                    afterLoginState = _appState;
+                    _redirectToLoginState();
+                }
+
+                $rootScope.$on(MUE_AUTH_EVENTS.logoutSuccess, _onLogout);
+
+                $rootScope.$on(MUE_AUTH_EVENTS.logoutFailed, _onLogout);
+
+                return {
+                    login: login,
+                    logout: logout,
+                    initSession: initSession
+                };
+            }]
+        };
+    });
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.security').factory('mueSession', function () {
+        var _user = null;
+
+        /**
+         * Creates session with provided user data
+         *
+         * @param {!Object} user
+         * @private
+         */
+        function _create(user) {
+            _user = user;
+        }
+
+        function _destroy() {
+            _user = null;
+        }
+
+        function _getUser() {
+            return _user;
+        }
+
+        function _isAlive() {
+            return _user !== null;
+        }
+
+        return {
+            create: _create,
+            destroy: _destroy,
+            getUser: _getUser,
+            isAlive: _isAlive
+        };
+    });
+})();
+
+(function () {
+    'use strict';
+    angular.module('mue.core.security').factory('mueToken', function () {
+        var itemName = 'mueToken';
+
+        /**
+         * Creates token
+         *
+         * @param {!String} token
+         * @private
+         */
+        function _create(token) {
+            localStorage.setItem(itemName, token);
+        }
+
+        function _destroy() {
+            localStorage.setItem(itemName, null);
+        }
+
+        function _getToken() {
+            localStorage.getItem(itemName);
+        }
+
+        function _hasToken() {
+            return Boolean(localStorage.getItem(itemName));
+        }
+
+        return {
+            create: _create,
+            destroy: _destroy,
+            getToken: _getToken,
+            hasToken: _hasToken
+        };
+    });
+})();
+
+/**
  * @ngdoc directive
- * @name mue.date-switcher.directive:mueDateSwitcher
+ * @name mue.core.calendar-manager.directive:mueCalendarManager
+ * @restrict E
+ * @element mue-calendar-manager
+ *
+ * @description
+ *
+ *
+ <example module="test">
+
+ <file name="index.html">
+ <div ng-controller="Test">
+ <mue-calendar-manager></mue-calendar-manager>
+ </div>
+ </file>
+
+ <file name="script.js">
+ angular.module('test', ['mue.seed']).controller('Test', function($scope){});
+ </file>
+
+ </example>
+ */
+
+angular.module('mue.core.calendar-manager')
+    .directive('mueCalendarManager', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'src/core/components/calendar-manager/calendar-manager.directive.html',
+            link: function (scope, element) {
+                scope.title = 'My calendars';
+
+                function _deleteCalendar(){
+
+                }
+
+                function _showMenu(){
+
+                }
+
+                var actions = [
+                    {
+                        icon: 'trash',
+                        handler: _deleteCalendar
+                    },
+                    {
+                        icon: 'gear',
+                        handler: _showMenu
+                    }
+                ];
+
+                scope.listConfig = [
+                    {
+                        id: '1',
+                        active: false,
+                        text: 'Birthday',
+                        icon: 'desktop',
+                        actions: actions
+                    },
+                    {
+                        id: '1',
+                        active: false,
+                        text: 'Birthday',
+                        icon: 'desktop',
+                        actions: actions
+                    }
+                ];
+            }
+        }
+    });
+/**
+ * @ngdoc directive
+ * @name mue.core.date-switcher.directive:mueDateSwitcher
  * @restrict E
  * @element mue-date-switcher
  *
@@ -88,7 +673,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.date-switcher']).controller('Test', function($scope){
+ angular.module('test', ['mue.core.date-switcher']).controller('Test', function($scope){
      $scope.config = {
             type: 2,
             start: new Date(),
@@ -100,7 +685,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
  </example>
  */
 
-angular.module('mue.date-switcher')
+angular.module('mue.core.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
             restrict: 'E',
@@ -176,7 +761,7 @@ angular.module('mue.date-switcher')
     });
 /**
  * @ngdoc directive
- * @name mue.date-viewer.directive:mueDateViewer
+ * @name mue.core.date-viewer.directive:mueDateViewer
  * @restrict E
  * @element mue-date-viewer
  *
@@ -193,7 +778,7 @@ angular.module('mue.date-switcher')
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.date-viewer']).controller('Test', function($scope){
+ angular.module('test', ['mue.core.date-viewer']).controller('Test', function($scope){
  $scope.dateViewerConfiguration = {
             type: 2,
             start: new Date(),
@@ -205,7 +790,7 @@ angular.module('mue.date-switcher')
  </example>
  */
 
-angular.module('mue.date-viewer')
+angular.module('mue.core.date-viewer')
     .directive('mueDateViewer', function () {
         return {
             restrict: 'E',
@@ -220,7 +805,132 @@ angular.module('mue.date-viewer')
     });
 /**
  * @ngdoc directive
- * @name mue.seed.directive:mueSeed
+ * @name mue.core.list-group:mueListGroup
+ * @restrict E
+ * @element mue-list-group
+ *
+ * @description
+ * Test
+ *
+ *
+ <example module="test">
+
+ <file name="index.html">
+ <div ng-controller="Test">
+ <mue-list-group mue-config='config'></mue-list-group>
+ </div>
+ </file>
+
+ <file name="script.js">
+ angular.module('test', ['mue.core.list-group']).controller('Test', function($scope){
+
+    function _deleteCalendar(item) {
+            _.remove($scope.config.items, function (n) {
+                return n.id == item.id;
+            });
+        }
+
+        function _showMenu(item) {
+            alert(item.text + ' showMenu');
+        }
+
+        var actions = [
+            {
+                icon: 'trash',
+                handler: _deleteCalendar
+            },
+            {
+                icon: 'gear',
+                handler: _showMenu
+            }
+        ];
+
+    $scope.config = $scope.config = {
+            clickHandler: function (item) {
+                item.active = !item.active;
+            },
+
+            items: [
+                {
+                    id: '1',
+                    active: false,
+                    text: 'Birthday',
+                    icon: 'desktop',
+                    actions: actions
+                },
+                {
+                    id: '2',
+                    active: true,
+                    text: 'Holiday',
+                    icon: 'trash'
+                }
+            ],
+            ui: {
+                flat: true,
+                dark: true
+            }
+        };
+ });
+ </file>
+
+ </example>
+ */
+
+angular.module('mue.core.list-group')
+    .directive('mueListGroup', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'src/core/components/list-group/list-group.directive.html',
+            scope: {
+                mueConfig: '='
+            }
+        }
+    });
+/**
+ * @ngdoc directive
+ * @name mue.core.login.directive:mueLogin
+ * @restrict E
+ * @element mue-login
+ *
+ * @description
+ * Test
+ *
+ *
+ <example module="test">
+
+ <file name="index.html">
+ <div ng-controller="Test">
+ <mue-login></mue-login>
+ </div>
+ </file>
+
+ <file name="script.js">
+ angular.module('test', ['mue.core.seed']).controller('Test', function($scope){});
+ </file>
+
+ </example>
+ */
+
+angular.module('mue.core.login')
+    .directive('mueLogin', ['mueAuthentication', 'MUE_AUTH_EVENTS', '$rootScope', function (mueAuthentication, MUE_AUTH_EVENTS, $rootScope) {
+        return {
+            restrict: 'E',
+            templateUrl: 'src/core/components/login/login.directive.html',
+            scope: {
+                mueConfig: '='
+            },
+            link: function (scope) {
+                scope.login = function () {
+                    mueAuthentication.login().then(function (data) {
+                        $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess, data);
+                    });
+                }
+            }
+        }
+    }]);
+/**
+ * @ngdoc directive
+ * @name mue.core.seed.directive:mueSeed
  * @restrict E
  * @element mue-seed
  *
@@ -237,16 +947,164 @@ angular.module('mue.date-viewer')
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.seed']).controller('Test', function($scope){});
+ angular.module('test', ['mue.core.seed']).controller('Test', function($scope){});
  </file>
 
  </example>
  */
 
-angular.module('mue.seed')
+angular.module('mue.core.seed')
     .directive('mueSeed', function () {
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/seed/seed.directive.html'
         }
     });
+(function () {
+    'use strict';
+    angular.module('mue.core.security').provider('mueAuthUserResource', function () {
+        var applicationOauthKey = null,
+            timeout = 1000 * 60 * 2,
+            origin = 'http://proxy.mue.in.ua',
+            provideServer = 'http://proxy.mue.in.ua/provide/',
+            provide = null;
+
+        function setOauthKey(oauthKey) {
+            applicationOauthKey = oauthKey;
+        }
+
+        function config(options) {
+            options = options || {};
+
+            if (options.origin) {
+                origin = options.origin;
+                provideServer = origin + '/provide/';
+            }
+        }
+
+        return {
+            setOauthKey: setOauthKey,
+
+            config: config,
+
+            $get: ['$q', function ($q) {
+                function Provide() {
+                    this.timeout = 1000 * 60; // on minute
+                    this.initialize();
+                }
+
+                Provide.prototype = {
+                    initialize: function () {
+                    },
+
+                    open: function () {
+                        var me = this;
+
+                        this.defer = $q.defer();
+
+                        this.window = window.open(provideServer + applicationOauthKey);
+
+                        window.addEventListener("message", function (e) {
+                            me.receiveMessage(e);
+                        }, false);
+
+                        this.openTimeout = setTimeout(function () {
+                            me.reject('Timeout');
+                        }, timeout);
+
+                        this.openInterval = setInterval(function () {
+                            me.window.postMessage({
+                                origin: window.location.origin,
+                                host: window.location.host,
+                                href: window.location.href
+                            }, '*');
+                        }, 500);
+
+                        this.windowClosedInterval = setInterval(function () {
+                            if (me.window.closed) {
+                                me.reject('Window was closed');
+                            }
+                        }, 1000);
+
+                        return this.defer.promise;
+                    },
+
+                    reject: function (errorMessage) {
+                        this.clearOpenInterval();
+                        this.clearWindowClosedInterval();
+                        this.clearOpenTimeout();
+                        this.unSubscribeMessage();
+                        this.defer.reject({
+                            status: 500,
+                            message: errorMessage || 'Server error'
+                        });
+                    },
+
+                    unSubscribeMessage: function () {
+                        window.removeEventListener("message", this.receiveMessage, false);
+                    },
+
+                    clearWindowClosedInterval: function () {
+                        clearInterval(this.windowClosedInterval);
+                    },
+
+                    clearOpenInterval: function () {
+                        if (this.openInterval) {
+                            clearInterval(this.openInterval);
+                            this.openInterval = null;
+                        }
+                    },
+
+                    clearOpenTimeout: function () {
+                        if (this.openTimeout) {
+                            clearTimeout(this.openTimeout);
+                            this.openTimeout = null;
+                        }
+                    },
+
+                    receiveMessage: function (event) {
+                        if (event.origin == origin) {
+                            this.clearOpenInterval();
+                            this.clearOpenTimeout();
+                            this.unSubscribeMessage();
+
+                            var data = JSON.parse(event.data);
+
+                            if (data.status == 200) {
+                                this.defer.resolve(data);
+                            } else {
+                                this.defer.reject(data);
+                            }
+                        }
+                    }
+                };
+
+                function login() {
+                    if (!provide) {
+                        provide = new Provide();
+                        return provide.open();
+                    }
+                }
+
+                if (!applicationOauthKey) {
+                    throw new Error('mueAuthUserResource service has not been configured properly.');
+                }
+
+                return {
+                    login: login
+                };
+            }]
+        };
+    });
+})();
+
+(function () {
+    'use strict';
+    angular.module('mue.core.user').factory('mueUserResource', ['$q', function ($q) {
+        return {
+            getCurrentUser: function () {
+                return $q.when();
+            }
+        }
+    }]);
+})();

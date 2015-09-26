@@ -6,6 +6,7 @@
     "angular-animate": "latest",
     "bootstrap-sass": "latest",
     "moment": "latest",
+    "lodash": "latest",
     "angular-ui-router": "latest"
   }
 }

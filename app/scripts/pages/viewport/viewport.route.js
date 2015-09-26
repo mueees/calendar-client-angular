@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('calendar.viewport').config(function ($stateProvider) {
-        $stateProvider.state('main', {
+        $stateProvider.state('app', {
             abstract: true,
-            url: '/main',
+            url: '/app',
             templateUrl: 'app/scripts/pages/viewport/viewport.view.html',
             controller: 'ViewportController'
         });

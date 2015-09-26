@@ -206,12 +206,223 @@
   color: white;
 }
 
+.mue-panel {
+  border-color: #d6e1e5;
+  border-width: 2px;
+  min-height: 30px;
+}
+.mue-panel.mue-panel-banana .panel-heading {
+  background: #fad46b;
+  color: white;
+}
+.mue-panel.mue-panel-lagoon .panel-heading {
+  background: #02baf2;
+  color: white;
+}
+.mue-panel .panel-heading {
+  position: relative;
+  text-align: center;
+}
+.mue-panel .panel-heading .btn-panel-heading-action {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #364347;
+}
+.mue-panel.mue-panel-wide .btn-panel-heading-action {
+  color: white;
+}
+.mue-panel.mue-panel-wide .panel-body {
+  padding: 0;
+}
+.mue-panel .mue-list-group-flat {
+  margin-bottom: 0;
+}
+.mue-panel .mue-toolbar-action {
+  border-radius: 0 0 4px 4px;
+}
+
+.mue-card {
+  border: none;
+}
+.mue-card .panel-body {
+  text-align: center;
+}
+.mue-card .mue-card-title {
+  margin: 20px 0 6px 0;
+}
+.mue-card .mue-card-icon {
+  font-size: 50px;
+}
+.mue-card .mue-card-description {
+  margin: 0 0 20px;
+  font-size: 12px;
+}
+.mue-card.mue-card-banana {
+  background: #fad46b;
+  color: white;
+}
+.mue-card.mue-card-lagoon {
+  background: #02baf2;
+  color: white;
+}
+
+.mue-toolbar {
+  padding: 0;
+  margin: 0;
+}
+.mue-toolbar li {
+  list-style: none;
+  color: #93a4aa;
+  width: 35px;
+  height: 35px;
+}
+.mue-toolbar .btn {
+  padding: 7px 10px;
+}
+.mue-toolbar.mue-toolbar-horizontal li {
+  float: left;
+}
+.mue-toolbar.mue-toolbar-dark li {
+  background: #5e696d;
+}
+.mue-toolbar.mue-toolbar-dark li.active, .mue-toolbar.mue-toolbar-dark li:hover, .mue-toolbar.mue-toolbar-dark li:active, .mue-toolbar.mue-toolbar-dark li:visited {
+  background: #fad46b;
+  color: white;
+  outline: none;
+  box-shadow: none;
+}
+.mue-toolbar.mue-toolbar-dark li.active .btn, .mue-toolbar.mue-toolbar-dark li:hover .btn, .mue-toolbar.mue-toolbar-dark li:active .btn, .mue-toolbar.mue-toolbar-dark li:visited .btn {
+  color: white;
+}
+.mue-toolbar.mue-toolbar-dark .btn {
+  color: #93a4aa;
+}
+
+.mue-toolbar-action {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.mue-toolbar-action li {
+  list-style: none;
+  color: #93a4aa;
+  width: 35px;
+  height: 35px;
+}
+.mue-toolbar-action .btn {
+  padding: 7px 10px;
+}
+.mue-toolbar-action.mue-toolbar-action-horizontal li {
+  display: inline-block;
+}
+.mue-toolbar-action.mue-toolbar-action-dark {
+  background: #364347;
+}
+.mue-toolbar-action.mue-toolbar-action-dark li.active, .mue-toolbar-action.mue-toolbar-action-dark li:hover, .mue-toolbar-action.mue-toolbar-action-dark li:active, .mue-toolbar-action.mue-toolbar-action-dark li:visited {
+  color: #fad46b;
+}
+.mue-toolbar-action.mue-toolbar-action-dark li.active .btn, .mue-toolbar-action.mue-toolbar-action-dark li:hover .btn, .mue-toolbar-action.mue-toolbar-action-dark li:active .btn, .mue-toolbar-action.mue-toolbar-action-dark li:visited .btn {
+  color: #fad46b;
+}
+.mue-toolbar-action.mue-toolbar-action-dark .btn {
+  color: #93a4aa;
+}
+
+.mue-list-group {
+  display: block;
+}
+.mue-list-group .mue-item-description {
+  color: #93a4aa;
+  font-size: 12px;
+  margin: 0;
+}
+.mue-list-group .mue-item-icon {
+  float: left;
+  font-size: 30px;
+  margin-right: 15px;
+  margin-top: 0;
+}
+.mue-list-group .mue-list-group-content {
+  padding: 0 5px 0 10px;
+  overflow: hidden;
+}
+.mue-list-group .mue-item-content {
+  overflow: hidden;
+}
+.mue-list-group.mue-list-group-lagoon .list-group-item {
+  border-color: #02baf2;
+}
+.mue-list-group.mue-list-group-lagoon .list-group-item.active, .mue-list-group.mue-list-group-lagoon .list-group-item:hover, .mue-list-group.mue-list-group-lagoon .list-group-item:active {
+  background-color: #02baf2;
+  color: white;
+}
+.mue-list-group.mue-list-group-lagoon .list-group-item.active .mue-item-description, .mue-list-group.mue-list-group-lagoon .list-group-item:hover .mue-item-description, .mue-list-group.mue-list-group-lagoon .list-group-item:active .mue-item-description {
+  color: white;
+}
+.mue-list-group.mue-list-group-lagoon .list-group-item.active:hover {
+  background-color: #02baf2;
+}
+.mue-list-group.mue-list-group-cove .list-group-item {
+  border-color: #3eb5ac;
+}
+.mue-list-group.mue-list-group-cove .list-group-item.active, .mue-list-group.mue-list-group-cove .list-group-item:hover, .mue-list-group.mue-list-group-cove .list-group-item:active {
+  background-color: #3eb5ac;
+  color: white;
+}
+.mue-list-group.mue-list-group-cove .list-group-item.active .mue-item-description, .mue-list-group.mue-list-group-cove .list-group-item:hover .mue-item-description, .mue-list-group.mue-list-group-cove .list-group-item:active .mue-item-description {
+  color: white;
+}
+.mue-list-group.mue-list-group-cove .list-group-item.active:hover {
+  background-color: #3eb5ac;
+}
+.mue-list-group.mue-list-group-dark {
+  background: #5e696d;
+  color: #d6e1e5;
+}
+.mue-list-group.mue-list-group-dark .btn {
+  color: #d6e1e5;
+}
+.mue-list-group.mue-list-group-dark .btn:hover {
+  color: #e1eef3;
+}
+.mue-list-group.mue-list-group-dark .list-group-item {
+  background: #5e696d;
+  border-color: #5e696d;
+}
+.mue-list-group.mue-list-group-dark .list-group-item.active, .mue-list-group.mue-list-group-dark .list-group-item:hover, .mue-list-group.mue-list-group-dark .list-group-item:active {
+  background-color: #364347;
+  color: #fad46b;
+}
+.mue-list-group.mue-list-group-dark .list-group-item.active .mue-item-description, .mue-list-group.mue-list-group-dark .list-group-item:hover .mue-item-description, .mue-list-group.mue-list-group-dark .list-group-item:active .mue-item-description {
+  color: #d6e1e5;
+}
+.mue-list-group.mue-list-group-dark .list-group-item.active:hover {
+  background-color: #364347;
+}
+.mue-list-group.mue-list-group-flat .list-group-item {
+  border-right: 0;
+  border-left: 0;
+}
+.mue-list-group.mue-list-group-flat .list-group-item:first-child {
+  border-top: none;
+  border-radius: 0;
+}
+.mue-list-group.mue-list-group-flat .list-group-item:last-child {
+  border-radius: 0;
+  border-bottom: none;
+}
+
 mue-date-viewer {
   display: inline-block;
 }
 
 mue-date-switcher {
   display: inline-block;
+}
+
+mue-calendar-manager .mue-list-group-flat .list-group-item {
+  cursor: pointer;
 }
 
 header {

@@ -4,6 +4,7 @@
     angular.module('calendar', [
         'calendar.templates',
         'ui.router',
-        'calendar.promo'
+        'calendar.promo',
+        'calendar.login'
     ]);
 })();
