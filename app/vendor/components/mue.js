@@ -145,7 +145,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
         // decorate angular $exceptionHandler service to intercept script errors
         $provide.decorator('$exceptionHandler', ['$delegate', '$injector', function ($delegate, $injector) {
             return function (exception, cause) {
-                $injector.get('rxScriptErrorHandler').handleScriptError(exception, cause);
+                $injector.get('mueScriptErrorHandler').handleScriptError(exception, cause);
                 $delegate(exception, cause);
             };
         }]);
@@ -816,23 +816,6 @@ angular.module('mue.core.components.seed')
             templateUrl: 'src/core/components/seed/seed.directive.html'
         }
     });
-(function () {
-    'use strict';
-    angular.module('mue.core.resources').factory('MueCalendarResource', ['$q', 'MueResource', function ($q, MueResource) {
-        var calendars = MueResource.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.addElementTransformer('calendar/calendar', true, function (calendar) {
-                // signature is (name, operation, path, params, headers, elementToPost)
-
-                calendar.addRestangularMethod('create', 'post', 'create');
-                calendar.addRestangularMethod('edit', 'post', 'edit');
-                calendar.addRestangularMethod('all', 'get', 'all');
-                return calendar;
-            });
-        }).all('calendar/calendar');
-
-        return calendars;
-    }]);
-})();
 (function () {
     'use strict';
     angular.module('mue.core.resources').factory('MueUserResource', ['$q', 'MueResource', function ($q, MueResource) {

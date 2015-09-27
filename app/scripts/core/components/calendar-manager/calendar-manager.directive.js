@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name mue.core.calendar-manager.directive:mueCalendarManager
+ * @name mue.core.calendar-manager.directive:ClrCalendarResource
  * @restrict E
  * @element mue-calendar-manager
  *
@@ -23,7 +23,7 @@
  */
 
 angular.module('clr.core.components.calendar-manager')
-    .directive('clrCalendarManager', function (MueCalendarResource, $timeout) {
+    .directive('clrCalendarManager', function (ClrCalendarResource, $timeout) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/calendar-manager/calendar-manager.directive.view.html',
@@ -48,7 +48,7 @@ angular.module('clr.core.components.calendar-manager')
                         _id: item._id
                     }).active = item.active;
 
-                    MueCalendarResource.edit({
+                    ClrCalendarResource.edit({
                         _id: item._id,
                         active: item.active
                     });
@@ -85,7 +85,7 @@ angular.module('clr.core.components.calendar-manager')
                 });
 
                 scope.add = function () {
-                    MueCalendarResource.create({
+                    ClrCalendarResource.create({
                         name: 'Test name',
                         description: 'Test description'
                     }).then(function () {

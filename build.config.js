@@ -62,13 +62,17 @@ module.exports = {
             'app/bower_components/angular/angular.js',
             'app/bower_components/angular-animate/angular-animate.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+            'app/bower_components/angular-growl/build/angular-growl.js',
+            'app/bower_components/angular-bootstrap/ui-bootstrap.js',
+            'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'app/bower_components/moment/moment.js',
             'app/bower_components/lodash/lodash.js',
             'app/bower_components/restangular/dist/restangular.js',
             'app/vendor/components/mue.js'
         ],
         css: [
-
+            'app/bower_components/angular-growl/build/angular-growl.min.css',
+            'app/bower_components/angular-bootstrap/ui-bootstrap-csp.css'
         ],
         fonts: [
 

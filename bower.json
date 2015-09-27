@@ -3,11 +3,15 @@
   "dependencies": {
     "angular": "1.4.6",
     "angular-animate": "latest",
-    "angular-animate": "latest",
     "bootstrap-sass": "latest",
+    "angular-bootstrap": "latest",
     "moment": "latest",
     "lodash": "latest",
     "restangular": "latest",
+    "angular-growl": "0.4.0",
     "angular-ui-router": "latest"
+  },
+  "resolutions": {
+    "angular": "~1.x"
   }
 }

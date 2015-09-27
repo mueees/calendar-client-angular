@@ -316,6 +316,22 @@ body {
   border-radius: 0 0 4px 4px;
 }
 
+.mue-form-panel {
+  padding: 15px;
+}
+.mue-form-panel .form-panel-title {
+  color: #fad46b;
+  font-size: 18px;
+}
+.mue-form-panel .form-panel-description {
+  margin-bottom: 15px;
+  color: #93a4aa;
+  font-size: 12px;
+}
+.mue-form-panel .help-block {
+  color: #93a4aa;
+}
+
 .mue-card {
   border: none;
 }

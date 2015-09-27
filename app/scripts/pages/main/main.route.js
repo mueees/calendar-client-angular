@@ -9,8 +9,8 @@
                 templateUrl: 'app/scripts/pages/main/main.view.html',
                 controller: 'MainController',
                 resolve: {
-                    calendars: function (MueCalendarResource) {
-                        return MueCalendarResource.all();
+                    calendars: function (ClrCalendarResource) {
+                        return ClrCalendarResource.all();
                     }
                 }
             });
