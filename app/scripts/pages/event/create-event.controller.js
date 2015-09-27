@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('calendar.event').controller('CreateEventController', function ($scope) {
+    angular.module('clr.event').controller('CreateEventController', function ($scope) {
 
     });
 })();

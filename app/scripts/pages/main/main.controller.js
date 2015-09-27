@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('calendar.main').controller('MainController', function ($scope, calendars) {
+    angular.module('clr.main').controller('MainController', function ($scope, calendars) {
         $scope.calendarManagerConfig = {
             calendars: calendars.plain() || []
         };

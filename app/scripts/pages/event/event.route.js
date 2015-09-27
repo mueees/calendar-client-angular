@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.event').config(function ($stateProvider) {
+    angular.module('clr.event').config(function ($stateProvider) {
         $stateProvider
             .state('app.event', {
                 url: '/event',

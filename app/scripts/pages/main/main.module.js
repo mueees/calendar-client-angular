@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.main', [
+    angular.module('clr.main', [
         'ui.router',
-        'calendar.viewport',
-        'mue.core.date-switcher',
-        'mue.core.calendar-manager'
+        'clr.viewport',
+        'clr.core.components.calendar-manager',
+        'mue.core.components.date-switcher'
     ]);
 })();

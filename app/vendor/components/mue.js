@@ -5,38 +5,6 @@
 angular.module('mue.template').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('src/core/components/calendar-manager/calendar-manager.directive.html',
-    "<div class=\"mue-calendar-manager\">\n" +
-    "    <div class=\"panel mue-panel mue-panel-wide mue-panel-lagoon\">\n" +
-    "        <div class=\"panel-heading\">\n" +
-    "            {{title}}\n" +
-    "        </div>\n" +
-    "        <div class=\"panel-body\">\n" +
-    "            <mue-list-group mue-config=\"listConfig\"></mue-list-group>\n" +
-    "            <ul class=\"mue-toolbar-action mue-toolbar-action-horizontal mue-toolbar-action-dark\">\n" +
-    "                <li>\n" +
-    "                    <button data-link=\"new\" class=\"btn btn-clear\" ng-click=\"add()\">\n" +
-    "                        <i class=\"fa fa-plus mue-icon\"></i>\n" +
-    "                    </button>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                    <button data-link=\"select\" class=\"btn btn-clear\" ng-click=\"selectAll()\">\n" +
-    "                        <i class=\"fa fa-check-square-o mue-icon\"></i>\n" +
-    "                    </button>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                    <button data-link=\"unSelect\" class=\"btn btn-clear\" ng-click=\"deselectAll()\">\n" +
-    "                        <i class=\"fa fa-square-o mue-icon\"></i>\n" +
-    "                    </button>\n" +
-    "                </li>\n" +
-    "            </ul>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"calendar-manager-footer\"></div>\n" +
-    "</div>"
-  );
-
-
   $templateCache.put('src/core/components/date-switcher/date-switcher.directive.html',
     "<button class=\"btn btn-lagoon mue-date-switcher-today\" ng-click=\"today()\" ng-disabled=\"isDisabled()\">Today</button>\n" +
     "\n" +
@@ -120,42 +88,35 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 }]);
 
 (function(){
-    angular.module('mue.core.calendar-manager', [
+    angular.module('mue.core.components.date-switcher', [
         'mue.template',
-        'mue.core.list-group',
-        'mue.core.resources'
+        'mue.core.components.date-viewer'
     ]);
 })();
 (function(){
-    angular.module('mue.core.date-switcher', [
-        'mue.template',
-        'mue.core.date-viewer'
-    ]);
-})();
-(function(){
-    angular.module('mue.core.date-viewer', [
+    angular.module('mue.core.components.date-viewer', [
         'mue.template'
     ]);
 })();
 (function(){
-    angular.module('mue.core.header', [
+    angular.module('mue.core.components.header', [
         'mue.template',
         'mue.core.security'
     ]);
 })();
 (function(){
-    angular.module('mue.core.list-group', [
+    angular.module('mue.core.components.list-group', [
         'mue.template'
     ]);
 })();
 (function(){
-    angular.module('mue.core.login', [
+    angular.module('mue.core.components.login', [
         'mue.template',
         'mue.core.security'
     ]);
 })();
 (function(){
-    angular.module('mue.core.seed', [
+    angular.module('mue.core.components.seed', [
         'mue.template'
     ]);
 })();
@@ -524,128 +485,6 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 
 /**
  * @ngdoc directive
- * @name mue.core.calendar-manager.directive:mueCalendarManager
- * @restrict E
- * @element mue-calendar-manager
- *
- * @description
- *
- *
- <example module="test">
-
- <file name="index.html">
- <div ng-controller="Test">
- <mue-calendar-manager></mue-calendar-manager>
- </div>
- </file>
-
- <file name="script.js">
- angular.module('test', ['mue.seed']).controller('Test', function($scope){});
- </file>
-
- </example>
- */
-
-angular.module('mue.core.calendar-manager')
-    .directive('mueCalendarManager', ['MueCalendarResource', '$timeout', function (MueCalendarResource, $timeout) {
-        return {
-            restrict: 'E',
-            templateUrl: 'src/core/components/calendar-manager/calendar-manager.directive.html',
-            scope: {
-                mueConfig: '='
-            },
-            link: function (scope, element) {
-                scope.title = 'My calendars';
-
-                function deleteHandler() {
-                    console.log('delete handler');
-                }
-
-                function settingHandler() {
-                    console.log('setting handler');
-                }
-
-                function clickHandler(item) {
-                    item.active = !item.active;
-
-                    _.find(scope.mueConfig.calendars, {
-                        _id: item._id
-                    }).active = item.active;
-
-                    MueCalendarResource.edit({
-                        _id: item._id,
-                        active: item.active
-                    });
-                }
-
-                var actions = [
-                    {
-                        handler: deleteHandler,
-                        icon: 'trash'
-                    },
-                    {
-                        handler: settingHandler,
-                        icon: 'gear'
-                    }
-                ];
-
-                scope.listConfig = {
-                    ui: {
-                        flat: true,
-                        dark: true
-                    },
-                    clickHandler: clickHandler,
-                    items: []
-                };
-
-                _.each(scope.mueConfig.calendars, function (calendar) {
-                    scope.listConfig.items.push({
-                        _id: calendar._id,
-                        actions: actions,
-                        icon: 'desktop',
-                        text: calendar.name,
-                        active: calendar.active
-                    })
-                });
-
-                scope.add = function () {
-                    MueCalendarResource.create({
-                        name: 'Test name',
-                        description: 'Test description'
-                    }).then(function () {
-                        scope.listConfig.items.push({
-                            actions: actions,
-                            icon: 'desktop',
-                            text: 'Test name',
-                            active: false
-                        });
-                    });
-                };
-
-                scope.selectAll = function () {
-                    _.each(scope.listConfig.items, function (item) {
-                        item.active = true;
-                    });
-
-                    _.each(scope.mueConfig.calendars, function (calendar) {
-                        calendar.active = true;
-                    });
-                };
-
-                scope.deselectAll = function () {
-                    _.each(scope.listConfig.items, function (item) {
-                        item.active = false;
-                    });
-
-                    _.each(scope.mueConfig.calendars, function (calendar) {
-                        calendar.active = false;
-                    });
-                };
-            }
-        }
-    }]);
-/**
- * @ngdoc directive
  * @name mue.core.date-switcher.directive:mueDateSwitcher
  * @restrict E
  * @element mue-date-switcher
@@ -675,7 +514,7 @@ angular.module('mue.core.calendar-manager')
  </example>
  */
 
-angular.module('mue.core.date-switcher')
+angular.module('mue.core.components.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
             restrict: 'E',
@@ -780,7 +619,7 @@ angular.module('mue.core.date-switcher')
  </example>
  */
 
-angular.module('mue.core.date-viewer')
+angular.module('mue.core.components.date-viewer')
     .directive('mueDateViewer', function () {
         return {
             restrict: 'E',
@@ -818,7 +657,7 @@ angular.module('mue.core.date-viewer')
  </example>
  */
 
-angular.module('mue.core.header')
+angular.module('mue.core.components.header')
     .directive('mueHeader', ['mueAuthentication', function (mueAuthentication) {
         return {
             restrict: 'E',
@@ -906,7 +745,7 @@ angular.module('mue.core.header')
  </example>
  */
 
-angular.module('mue.core.list-group')
+angular.module('mue.core.components.list-group')
     .directive('mueListGroup', function () {
         return {
             restrict: 'E',
@@ -928,7 +767,7 @@ angular.module('mue.core.list-group')
  *
  */
 
-angular.module('mue.core.login')
+angular.module('mue.core.components.login')
     .directive('mueLogin', ['mueAuthentication', 'MUE_AUTH_EVENTS', '$rootScope', function (mueAuthentication, MUE_AUTH_EVENTS, $rootScope) {
         return {
             restrict: 'E',
@@ -970,7 +809,7 @@ angular.module('mue.core.login')
  </example>
  */
 
-angular.module('mue.core.seed')
+angular.module('mue.core.components.seed')
     .directive('mueSeed', function () {
         return {
             restrict: 'E',

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.viewport').config(function ($stateProvider) {
+    angular.module('clr.viewport').config(function ($stateProvider) {
         $stateProvider.state('app', {
             abstract: true,
             url: '/app',

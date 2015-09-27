@@ -1,5 +1,5 @@
 (function(){
-    angular.module('clr.core.calendar-create', [
-        'mue.template'
+    angular.module('clr.core.components.calendar-create', [
+        'clr.template'
     ]);
 })();

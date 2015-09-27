@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.login').config(function ($stateProvider) {
+    angular.module('clr.login').config(function ($stateProvider) {
         $stateProvider
             .state('login', {
                 url: '/login',

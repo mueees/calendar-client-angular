@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.login', [
+    angular.module('clr.login', [
         'ui.router',
-        'mue.core.login'
+        'mue.core.components.login'
     ]);
 })();

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('calendar.viewport', [
+    angular.module('clr.viewport', [
         'ui.router',
-        'mue.core.header',
+        'mue.core.components.header',
         'mue.core.security'
     ]);
 })();

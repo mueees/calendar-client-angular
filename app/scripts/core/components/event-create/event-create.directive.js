@@ -9,11 +9,11 @@
  *
  */
 
-angular.module('mue.core.event-create')
-    .directive('mueEventCreate', function () {
+angular.module('clr.core.components.event-create')
+    .directive('clrEventCreate', function () {
         return {
             restrict: 'E',
-            templateUrl: 'scripts/core/components/event-create/event-create.directive.html',
+            templateUrl: 'app/scripts/core/components/event-create/event-create.directive.view.html',
             scope: {},
             link: function (scope, element) {
 

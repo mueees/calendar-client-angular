@@ -42,10 +42,10 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     base: '.',
-                    module: 'calendar.templates'
+                    module: 'clr.templates'
                 },
                 src: ['<%= app_files.js.templates %>'],
-                dest: '<%= build_dir %>/app/scripts/calendar.templates.js'
+                dest: '<%= build_dir %>/app/scripts/clr.templates.js'
             }
         },
         copy: {
@@ -161,7 +161,7 @@ module.exports = function (grunt) {
                     relative: true,
                     scripts: {
                         libs: changeRootFolder(userConfig.vendor_files.js, 'app/vendor', '<%= build_dir %>/app/vendor'),
-                        templates: '<%= build_dir %>/app/scripts/calendar.templates.js',
+                        templates: '<%= build_dir %>/app/scripts/clr.templates.js',
                         app: changeRootFolder(userConfig.app_files.js.app, 'app/scripts', '<%= build_dir %>/app/scripts')
                     },
                     styles: {

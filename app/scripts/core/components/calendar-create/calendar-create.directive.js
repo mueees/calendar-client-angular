@@ -9,11 +9,11 @@
  *
  */
 
-angular.module('clr.core.calendar-create')
-    .directive('mueCalendarCreate', function () {
+angular.module('clr.core.components.calendar-create')
+    .directive('clrCalendarCreate', function () {
         return {
             restrict: 'E',
-            templateUrl: 'src/core/components/calendar-create/calendar-create.directive.html',
+            templateUrl: 'app/scripts/core/components/calendar-create/calendar-create.directive.view.html',
             scope: {},
             link: function (scope, element) {
 

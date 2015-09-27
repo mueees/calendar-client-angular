@@ -1,4 +1,4 @@
 (function(){
-    angular.module('mue.core.event-create', [
+    angular.module('clr.core.components.event-create', [
     ]);
 })();
