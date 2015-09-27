@@ -2,7 +2,9 @@
     'use strict';
 
     angular.module('calendar.main', [
+        'ui.router',
         'calendar.viewport',
-        'ui.router'
+        'mue.core.date-switcher',
+        'mue.core.calendar-manager'
     ]);
 })();

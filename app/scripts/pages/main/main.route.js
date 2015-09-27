@@ -7,7 +7,12 @@
                 url: '/main',
                 isLoginRequired: true,
                 templateUrl: 'app/scripts/pages/main/main.view.html',
-                controller: 'MainController'
+                controller: 'MainController',
+                resolve: {
+                    calendars: function (MueCalendarResource) {
+                        return MueCalendarResource.all();
+                    }
+                }
             });
     });
 })();

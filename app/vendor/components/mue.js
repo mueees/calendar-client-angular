@@ -12,86 +12,20 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     "            {{title}}\n" +
     "        </div>\n" +
     "        <div class=\"panel-body\">\n" +
-    "            <div class=\"list-group mue-list-group mue-list-group-flat mue-list-group-dark\">\n" +
-    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
-    "                    <div class=\"pull-left\">\n" +
-    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"pull-right\">\n" +
-    "                        <button class=\"btn btn-clear\">\n" +
-    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"mue-list-group-content\">\n" +
-    "                        Birthday\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
-    "                    <div class=\"pull-left\">\n" +
-    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"pull-right\">\n" +
-    "                        <button class=\"btn btn-clear\" >\n" +
-    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"mue-list-group-content\">\n" +
-    "                        Event\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
-    "                    <div class=\"pull-left\">\n" +
-    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"pull-right\">\n" +
-    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
-    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"mue-list-group-content\">\n" +
-    "                        Weeding\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
-    "                    <div class=\"pull-left\">\n" +
-    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"pull-right\">\n" +
-    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
-    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"mue-list-group-content\">\n" +
-    "                        Work\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"list-group-item list-group-item-lagoon\">\n" +
-    "                    <div class=\"pull-left\">\n" +
-    "                        <i class=\"fa fa-desktop mue-icon\"></i>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"pull-right\">\n" +
-    "                        <button class=\"btn btn-clear\" data-link=\"remove\">\n" +
-    "                            <i class=\"fa fa-trash mue-icon\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"mue-list-group-content\">\n" +
-    "                        Holidays\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
+    "            <mue-list-group mue-config=\"listConfig\"></mue-list-group>\n" +
     "            <ul class=\"mue-toolbar-action mue-toolbar-action-horizontal mue-toolbar-action-dark\">\n" +
     "                <li>\n" +
-    "                    <button data-link=\"new\" class=\"btn btn-clear\">\n" +
+    "                    <button data-link=\"new\" class=\"btn btn-clear\" ng-click=\"add()\">\n" +
     "                        <i class=\"fa fa-plus mue-icon\"></i>\n" +
     "                    </button>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    <button data-link=\"select\" class=\"btn btn-clear\">\n" +
+    "                    <button data-link=\"select\" class=\"btn btn-clear\" ng-click=\"selectAll()\">\n" +
     "                        <i class=\"fa fa-check-square-o mue-icon\"></i>\n" +
     "                    </button>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    <button data-link=\"unSelect\" class=\"btn btn-clear\">\n" +
+    "                    <button data-link=\"unSelect\" class=\"btn btn-clear\" ng-click=\"deselectAll()\">\n" +
     "                        <i class=\"fa fa-square-o mue-icon\"></i>\n" +
     "                    </button>\n" +
     "                </li>\n" +
@@ -134,7 +68,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     "        {{mueConfig.email}}\n" +
     "    </li>\n" +
     "    <li>\n" +
-    "        <a ng-click=\"logoutHandler()\">Logout</a>\n" +
+    "        <a href=\"\" ng-click=\"logoutHandler()\">Logout</a>\n" +
     "    </li>\n" +
     "</ul>"
   );
@@ -187,7 +121,9 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 
 (function(){
     angular.module('mue.core.calendar-manager', [
-        'mue.template'
+        'mue.template',
+        'mue.core.list-group',
+        'mue.core.resources'
     ]);
 })();
 (function(){
@@ -232,21 +168,13 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 (function () {
     'use strict';
     angular.module('mue.core.resources', [
-        'restangular',
-        'mue.core.security'
+        'restangular'
     ]);
 })();
-
 (function () {
     'use strict';
     angular.module('mue.core.security', [
         'ui.router',
-        'mue.core.resources',
-        'mue.core.user'
-    ]);
-})();
-(function(){
-    angular.module('mue.core.user', [
         'mue.core.resources'
     ]);
 })();
@@ -393,7 +321,6 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
         return {
             loginState: loginState,
             appState: appState,
-
             $get: ['$state', '$rootScope', '$q', 'mueAuthUserResource', 'MueUserResource', 'MueResource', 'mueSession', 'mueToken', 'MUE_AUTH_EVENTS', function ($state, $rootScope, $q, mueAuthUserResource, MueUserResource, MueResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
                     throw new Error('mueAuthentication service has not been configured properly.');
@@ -620,51 +547,103 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
  */
 
 angular.module('mue.core.calendar-manager')
-    .directive('mueCalendarManager', function () {
+    .directive('mueCalendarManager', ['MueCalendarResource', '$timeout', function (MueCalendarResource, $timeout) {
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/calendar-manager/calendar-manager.directive.html',
+            scope: {
+                mueConfig: '='
+            },
             link: function (scope, element) {
                 scope.title = 'My calendars';
 
-                function _deleteCalendar(){
-
+                function deleteHandler() {
+                    console.log('delete handler');
                 }
 
-                function _showMenu(){
+                function settingHandler() {
+                    console.log('setting handler');
+                }
 
+                function clickHandler(item) {
+                    item.active = !item.active;
+
+                    _.find(scope.mueConfig.calendars, {
+                        _id: item._id
+                    }).active = item.active;
+
+                    MueCalendarResource.edit({
+                        _id: item._id,
+                        active: item.active
+                    });
                 }
 
                 var actions = [
                     {
-                        icon: 'trash',
-                        handler: _deleteCalendar
+                        handler: deleteHandler,
+                        icon: 'trash'
                     },
                     {
-                        icon: 'gear',
-                        handler: _showMenu
+                        handler: settingHandler,
+                        icon: 'gear'
                     }
                 ];
 
-                scope.listConfig = [
-                    {
-                        id: '1',
-                        active: false,
-                        text: 'Birthday',
-                        icon: 'desktop',
-                        actions: actions
+                scope.listConfig = {
+                    ui: {
+                        flat: true,
+                        dark: true
                     },
-                    {
-                        id: '1',
-                        active: false,
-                        text: 'Birthday',
+                    clickHandler: clickHandler,
+                    items: []
+                };
+
+                _.each(scope.mueConfig.calendars, function (calendar) {
+                    scope.listConfig.items.push({
+                        _id: calendar._id,
+                        actions: actions,
                         icon: 'desktop',
-                        actions: actions
-                    }
-                ];
+                        text: calendar.name,
+                        active: calendar.active
+                    })
+                });
+
+                scope.add = function () {
+                    MueCalendarResource.create({
+                        name: 'Test name',
+                        description: 'Test description'
+                    }).then(function () {
+                        scope.listConfig.items.push({
+                            actions: actions,
+                            icon: 'desktop',
+                            text: 'Test name',
+                            active: false
+                        });
+                    });
+                };
+
+                scope.selectAll = function () {
+                    _.each(scope.listConfig.items, function (item) {
+                        item.active = true;
+                    });
+
+                    _.each(scope.mueConfig.calendars, function (calendar) {
+                        calendar.active = true;
+                    });
+                };
+
+                scope.deselectAll = function () {
+                    _.each(scope.listConfig.items, function (item) {
+                        item.active = false;
+                    });
+
+                    _.each(scope.mueConfig.calendars, function (calendar) {
+                        calendar.active = false;
+                    });
+                };
             }
         }
-    });
+    }]);
 /**
  * @ngdoc directive
  * @name mue.core.date-switcher.directive:mueDateSwitcher
@@ -1000,6 +979,35 @@ angular.module('mue.core.seed')
     });
 (function () {
     'use strict';
+    angular.module('mue.core.resources').factory('MueCalendarResource', ['$q', 'MueResource', function ($q, MueResource) {
+        var calendars = MueResource.withConfig(function (RestangularConfigurer) {
+            RestangularConfigurer.addElementTransformer('calendar/calendar', true, function (calendar) {
+                // signature is (name, operation, path, params, headers, elementToPost)
+
+                calendar.addRestangularMethod('create', 'post', 'create');
+                calendar.addRestangularMethod('edit', 'post', 'edit');
+                calendar.addRestangularMethod('all', 'get', 'all');
+                return calendar;
+            });
+        }).all('calendar/calendar');
+
+        return calendars;
+    }]);
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.resources').factory('MueUserResource', ['$q', 'MueResource', function ($q, MueResource) {
+        var user = MueResource.one('account/user');
+
+        return {
+            getCurrentUser: function () {
+                return user.get();
+            }
+        }
+    }]);
+})();
+(function () {
+    'use strict';
     angular.module('mue.core.security').provider('mueAuthUserResource', function () {
         var applicationOauthKey = null,
             timeout = 1000 * 60 * 2,
@@ -1134,17 +1142,4 @@ angular.module('mue.core.seed')
             }]
         };
     });
-})();
-
-(function () {
-    'use strict';
-    angular.module('mue.core.user').factory('MueUserResource', ['$q', 'MueResource', function ($q, MueResource) {
-        var user = MueResource.one('account/user');
-
-        return {
-            getCurrentUser: function () {
-                return user.get();
-            }
-        }
-    }]);
 })();
