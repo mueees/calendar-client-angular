@@ -12,6 +12,6 @@
     "angular-ui-router": "latest"
   },
   "resolutions": {
-    "angular": "~1.x"
+    "angular": "~1.4.6"
   }
 }

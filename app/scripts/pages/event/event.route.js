@@ -12,7 +12,12 @@
                 url: '/create',
                 isLoginRequired: true,
                 templateUrl: 'app/scripts/pages/event/create-event.view.html',
-                controller: 'CreateEventController'
+                controller: 'CreateEventController',
+                resolve: {
+                    calendars: function (ClrCalendarResource) {
+                        return ClrCalendarResource.all();
+                    }
+                }
             });
     });
 })();

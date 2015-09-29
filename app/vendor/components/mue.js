@@ -6,77 +6,128 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('src/core/components/date-switcher/date-switcher.directive.html',
-    "<button class=\"btn btn-lagoon mue-date-switcher-today\" ng-click=\"today()\" ng-disabled=\"isDisabled()\">Today</button>\n" +
+    "<button class=\"btn btn-lagoon mue-date-switcher-today\" ng-click=\"today()\" ng-disabled=\"isDisabled()\">Today</button>\r" +
     "\n" +
-    "<div class=\"btn-group mue-date-switcher-navigation\">\n" +
-    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"prev()\"><</button>\n" +
-    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"next()\">></button>\n" +
-    "</div>\n" +
+    "\r" +
+    "\n" +
+    "<div class=\"btn-group mue-date-switcher-navigation\">\r" +
+    "\n" +
+    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"prev()\"><</button>\r" +
+    "\n" +
+    "    <button type=\"button\" class=\"btn btn-lagoon\" ng-click=\"next()\">></button>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "<mue-date-viewer mue-config=\"dateViewerConfiguration\"></mue-date-viewer>"
   );
 
 
   $templateCache.put('src/core/components/date-viewer/date-viewer.directive.html',
-    "<div ng-switch=\"mueConfig.type\">\n" +
-    "    <span ng-switch-when=\"1\">\n" +
-    "        {{mueConfig.start | date:'dd MMMM yyyy'}}\n" +
-    "    </span>\n" +
-    "    <span ng-switch-when=\"2\">\n" +
-    "        {{mueConfig.start | date:'dd MMMM'}} - {{mueConfig.end | date:'dd MMMM'}}, {{mueConfig.end | date:'yyyy'}}\n" +
-    "    </span>\n" +
+    "<div ng-switch=\"mueConfig.type\">\r" +
+    "\n" +
+    "    <span ng-switch-when=\"1\">\r" +
+    "\n" +
+    "        {{mueConfig.start | date:'dd MMMM yyyy'}}\r" +
+    "\n" +
+    "    </span>\r" +
+    "\n" +
+    "    <span ng-switch-when=\"2\">\r" +
+    "\n" +
+    "        {{mueConfig.start | date:'dd MMMM'}} - {{mueConfig.end | date:'dd MMMM'}}, {{mueConfig.end | date:'yyyy'}}\r" +
+    "\n" +
+    "    </span>\r" +
+    "\n" +
     "</div>"
   );
 
 
   $templateCache.put('src/core/components/header/header.directive.html',
-    "<div class=\"mue-brand\">{{mueConfig.name}}</div>\n" +
-    "<ul class=\"mue-nav mue-header-menu pull-right\">\n" +
-    "    <li>\n" +
-    "        {{mueConfig.email}}\n" +
-    "    </li>\n" +
-    "    <li>\n" +
-    "        <a href=\"\" ng-click=\"logoutHandler()\">Logout</a>\n" +
-    "    </li>\n" +
+    "<div class=\"mue-brand\">{{mueConfig.name}}</div>\r" +
+    "\n" +
+    "<ul class=\"mue-nav mue-header-menu pull-right\">\r" +
+    "\n" +
+    "    <li>\r" +
+    "\n" +
+    "        {{mueConfig.email}}\r" +
+    "\n" +
+    "    </li>\r" +
+    "\n" +
+    "    <li>\r" +
+    "\n" +
+    "        <a href=\"\" ng-click=\"logoutHandler()\">Logout</a>\r" +
+    "\n" +
+    "    </li>\r" +
+    "\n" +
     "</ul>"
   );
 
 
   $templateCache.put('src/core/components/list-group/list-group.directive.html',
-    "<div class=\"list-group mue-list-group \" ng-class=\"{'mue-list-group-flat': mueConfig.ui.flat, 'mue-list-group-dark': mueConfig.ui.dark}\">\n" +
-    "    <div ng-click=\"mueConfig.clickHandler(item)\" ng-class=\"{active: item.active}\" ng-repeat=\"item in mueConfig.items\" class=\"list-group-item list-group-item-lagoon\">\n" +
-    "        <div class=\"pull-left\">\n" +
-    "            <i class=\"fa fa-{{item.icon}} mue-icon\"></i>\n" +
-    "        </div>\n" +
-    "        <div class=\"pull-right\">\n" +
-    "            <button ng-click=\"action.handler(item)\" ng-repeat=\"action in item.actions\" class=\"btn btn-clear\">\n" +
-    "                <i class=\"fa fa-{{action.icon}} mue-icon\"></i>\n" +
-    "            </button>\n" +
-    "        </div>\n" +
-    "        <div class=\"mue-list-group-content\">\n" +
-    "            {{item.text}}\n" +
-    "        </div>\n" +
-    "    </div>\n" +
+    "<div class=\"list-group mue-list-group \" ng-class=\"{'mue-list-group-flat': mueConfig.ui.flat, 'mue-list-group-dark': mueConfig.ui.dark}\">\r" +
+    "\n" +
+    "    <div ng-click=\"mueConfig.clickHandler(item)\" ng-class=\"{active: item.active}\" ng-repeat=\"item in mueConfig.items\" class=\"list-group-item list-group-item-lagoon\">\r" +
+    "\n" +
+    "        <div class=\"pull-left\">\r" +
+    "\n" +
+    "            <i class=\"fa fa-{{item.icon}} mue-icon\"></i>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"pull-right\">\r" +
+    "\n" +
+    "            <button ng-click=\"action.handler(item)\" ng-repeat=\"action in item.actions\" class=\"btn btn-clear\">\r" +
+    "\n" +
+    "                <i class=\"fa fa-{{action.icon}} mue-icon\"></i>\r" +
+    "\n" +
+    "            </button>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"mue-list-group-content\">\r" +
+    "\n" +
+    "            {{item.text}}\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
     "</div>"
   );
 
 
   $templateCache.put('src/core/components/login/login.directive.html',
-    "<div class=\"panel mue-panel mue-card mue-card-lagoon\">\n" +
-    "    <div class=\"panel-body\">\n" +
-    "        <div class=\"mue-card-icon\">\n" +
-    "            <i class=\"fa fa-calendar mue-icon\"></i>\n" +
-    "        </div>\n" +
+    "<div class=\"panel mue-panel mue-card mue-card-lagoon\">\r" +
     "\n" +
-    "        <h4 class=\"mue-card-title\">{{mueConfig.name || 'New Application'}}</h4>\n" +
+    "    <div class=\"panel-body\">\r" +
     "\n" +
-    "        <div class=\"mue-card-description\" ng-if=\"mueConfig.description\">\n" +
-    "            {{mueConfig.description}}\n" +
-    "        </div>\n" +
+    "        <div class=\"mue-card-icon\">\r" +
     "\n" +
-    "        <button ng-click=\"login()\" class=\"btn btn-action btn-strawberry btn-block\">{{mueConfig.action || 'Login'}}\n" +
-    "        </button>\n" +
-    "    </div>\n" +
+    "            <i class=\"fa fa-calendar mue-icon\"></i>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <h4 class=\"mue-card-title\">{{mueConfig.name || 'New Application'}}</h4>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"mue-card-description\" ng-if=\"mueConfig.description\">\r" +
+    "\n" +
+    "            {{mueConfig.description}}\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <button ng-click=\"login()\" class=\"btn btn-action btn-strawberry btn-block\">{{mueConfig.action || 'Login'}}\r" +
+    "\n" +
+    "        </button>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
     "</div>"
   );
 
