@@ -14,7 +14,9 @@
                 };
 
                 scope.edit = function () {
-
+                    $state.go('app.event.edit', {
+                        id: scope.clrConfig.event._id
+                    });
                 };
             }
         };

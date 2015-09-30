@@ -6,7 +6,7 @@ angular.module('clr.core.components.event-create-quick')
             scope: {
                 clrConfig: '='
             },
-            link: function (scope) {
+            link: function (scope, element) {
                 scope.event = {
                     title: '',
                     start: scope.clrConfig.date || new Date(),
@@ -23,13 +23,20 @@ angular.module('clr.core.components.event-create-quick')
                 });
 
                 scope.create = function () {
-                    ClrEventResource.create(scope.event).then(function (event) {
-                        scope.clrConfig.create(event.plain());
+                    ClrEventResource.create(scope.event).then(function (data) {
+                        scope.event._id = data._id;
+
+                        scope.clrConfig.create({
+                            event: scope.event,
+                            calendar: _.find(scope.calendars, {
+                                _id: scope.event.calendarId
+                            })
+                        });
                     });
                 };
 
                 scope.edit = function () {
-                    //
+
                 };
 
                 scope.isDisabled = function () {
@@ -41,6 +48,8 @@ angular.module('clr.core.components.event-create-quick')
                 }
 
                 scope.close = scope.clrConfig.close;
+
+                element.find('input')[0].focus();
             }
         };
     });

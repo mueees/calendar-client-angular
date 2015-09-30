@@ -18,6 +18,20 @@
                         return ClrCalendarResource.all();
                     }
                 }
+            })
+            .state('app.event.edit', {
+                url: '/edit/{id}',
+                isLoginRequired: true,
+                templateUrl: 'app/scripts/pages/event/edit-event.view.html',
+                controller: 'EditEventController',
+                resolve: {
+                    calendars: function (ClrCalendarResource) {
+                        return ClrCalendarResource.all();
+                    },
+                    event: function (ClrEventResource, $stateParams) {
+                        return ClrEventResource.one('get/' + $stateParams.id).get();
+                    }
+                }
             });
     });
 })();

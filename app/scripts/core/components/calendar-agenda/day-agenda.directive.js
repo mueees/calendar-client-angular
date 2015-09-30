@@ -21,8 +21,8 @@
 
                 scope.eventCreateQuickConfig = {
                     date: scope.clrConfig.day.date,
-                    create: function (event) {
-                        scope.clrConfig.day.events.push(event);
+                    create: function (data) {
+                        scope.clrConfig.day.events.push(data);
 
                         scope.eventCreateQuickConfig.close();
                     },
