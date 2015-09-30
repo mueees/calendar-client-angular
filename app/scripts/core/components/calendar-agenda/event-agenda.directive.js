@@ -1,7 +1,7 @@
 // day-agenda.directive
 
 (function () {
-    angular.module('clr.core.components.calendar-agenda').directive('clrEventAgenda', function ($state) {
+    angular.module('clr.core.components.calendar-agenda').directive('clrEventAgenda', function ($state, $modal) {
         return {
             restrict: 'E',
             scope: {
@@ -15,7 +15,7 @@
 
                 scope.edit = function () {
                     $state.go('app.event.edit', {
-                        id: scope.clrConfig.event._id
+                        id: scope.clrConfig.event.rawId || scope.clrConfig.event._id
                     });
                 };
             }

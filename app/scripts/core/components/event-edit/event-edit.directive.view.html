@@ -1,13 +1,13 @@
-<div class="panel mue-panel mue-form-panel mue-event-add">
+<div class="panel mue-panel mue-form-panel">
     <form>
         <div class="mue-form-group-content">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-banana btn-action btn-sm" ng-click="create()"
+                        <button type="submit" class="btn btn-banana btn-action btn-sm" ng-click="edit()"
                                 ng-disabled="isDisabled()">
-                            <i class="fa fa-plus mue-icon"></i>
-                            <span>Create</span>
+                            <i class="fa fa-pencil mue-icon"></i>
+                            <span>Edit</span>
                         </button>
                         <button type="button" class="btn btn-neutral" ui-sref="app.main">Cancel</button>
                     </div>
@@ -42,7 +42,9 @@
                                 <timepicker class="pull-left" ng-model="event.start" hour-step="startTimepicker.hstep"
                                             minute-step="startTimepicker.mstep"
                                             show-meridian="startTimepicker.ismeridian"></timepicker>
+
                                 <span class="pull-left">&nbsp;&nbsp;&nbsp;</span>
+
                                 <timepicker readonly-input="endTimepicker.readOnly" class="pull-left"
                                             ng-model="event.end" hour-step="endTimepicker.hstep"
                                             minute-step="endTimepicker.mstep"

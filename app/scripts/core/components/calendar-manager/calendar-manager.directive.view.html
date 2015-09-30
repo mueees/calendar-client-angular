@@ -7,22 +7,24 @@
             <mue-list-group mue-config="listConfig"></mue-list-group>
             <ul class="mue-toolbar-action mue-toolbar-action-horizontal mue-toolbar-action-dark">
                 <li>
-                    <button data-link="new" class="btn btn-clear" ng-click="add()">
+                    <button class="btn btn-clear" ng-click="createNew = true">
                         <i class="fa fa-plus mue-icon"></i>
                     </button>
                 </li>
                 <li>
-                    <button data-link="select" class="btn btn-clear" ng-click="selectAll()">
+                    <button class="btn btn-clear" ng-click="selectAll()">
                         <i class="fa fa-check-square-o mue-icon"></i>
                     </button>
                 </li>
                 <li>
-                    <button data-link="unSelect" class="btn btn-clear" ng-click="deselectAll()">
+                    <button class="btn btn-clear" ng-click="deselectAll()">
                         <i class="fa fa-square-o mue-icon"></i>
                     </button>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="calendar-manager-footer"></div>
+    <div class="calendar-manager-footer">
+        <clr-calendar-create ng-if="createNew" clr-config="createCalendarConfig"></clr-calendar-create>
+    </div>
 </div>

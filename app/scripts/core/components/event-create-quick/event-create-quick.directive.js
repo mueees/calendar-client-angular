@@ -1,5 +1,5 @@
 angular.module('clr.core.components.event-create-quick')
-    .directive('clrEventCreateQuick', function (ClrEventResource, ClrCalendarResource, $state) {
+    .directive('clrEventCreateQuick', function (ClrEventResource, ClrCalendarResource, EventStorage, $state) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/event-create-quick/event-create-quick.directive.view.html',
@@ -11,7 +11,7 @@ angular.module('clr.core.components.event-create-quick')
                     title: '',
                     start: scope.clrConfig.date || new Date(),
                     end: scope.clrConfig.date || new Date(),
-                    calendarId: '',
+                    calendarId: null,
                     isAllDay: true,
                     isRepeat: false
                 };
@@ -20,6 +20,7 @@ angular.module('clr.core.components.event-create-quick')
 
                 ClrCalendarResource.all().then(function (calendars) {
                     scope.calendars = calendars.plain();
+                    scope.event.calendarId = scope.calendars[0]._id;
                 });
 
                 scope.create = function () {
@@ -36,7 +37,8 @@ angular.module('clr.core.components.event-create-quick')
                 };
 
                 scope.edit = function () {
-
+                    EventStorage.storeEventForEdit(scope.event);
+                    $state.go('app.event.create');
                 };
 
                 scope.isDisabled = function () {

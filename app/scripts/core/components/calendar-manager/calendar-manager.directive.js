@@ -1,27 +1,3 @@
-/**
- * @ngdoc directive
- * @name mue.core.calendar-manager.directive:ClrCalendarResource
- * @restrict E
- * @element mue-calendar-manager
- *
- * @description
- *
- *
- <example module="test">
-
- <file name="index.html">
- <div ng-controller="Test">
- <mue-calendar-manager></mue-calendar-manager>
- </div>
- </file>
-
- <file name="script.js">
- angular.module('test', ['mue.seed']).controller('Test', function($scope){});
- </file>
-
- </example>
- */
-
 angular.module('clr.core.components.calendar-manager')
     .directive('clrCalendarManager', function (ClrCalendarResource, $timeout) {
         return {
@@ -74,15 +50,19 @@ angular.module('clr.core.components.calendar-manager')
                     items: []
                 };
 
-                _.each(scope.clrConfig.calendars, function (calendar) {
-                    scope.listConfig.items.push({
-                        _id: calendar._id,
-                        actions: actions,
-                        icon: 'desktop',
-                        text: calendar.name,
-                        active: calendar.active
+                scope.$watch('clrConfig.calendars', function () {
+                    scope.listConfig.items = [];
+
+                    _.each(scope.clrConfig.calendars, function (calendar) {
+                        scope.listConfig.items.push({
+                            _id: calendar._id,
+                            actions: actions,
+                            icon: 'desktop',
+                            text: calendar.name,
+                            active: calendar.active
+                        });
                     });
-                });
+                }, true);
 
                 scope.add = function () {
                     ClrCalendarResource.create({
@@ -116,6 +96,16 @@ angular.module('clr.core.components.calendar-manager')
                     _.each(scope.clrConfig.calendars, function (calendar) {
                         calendar.active = false;
                     });
+                };
+
+                scope.createCalendarConfig = {
+                    create: function (calendar) {
+                        scope.clrConfig.calendars.push(calendar);
+                        scope.createCalendarConfig.close();
+                    },
+                    close: function () {
+                        scope.createNew = false;
+                    }
                 };
             }
         };

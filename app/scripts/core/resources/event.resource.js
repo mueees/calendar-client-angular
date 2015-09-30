@@ -7,7 +7,7 @@
 
                 events.addRestangularMethod('create', 'post', 'create');
                 events.addRestangularMethod('find', 'post', 'find');
-                events.addRestangularMethod('get', 'get', 'get');
+                events.addRestangularMethod('edit', 'post', 'edit');
 
                 return events;
             });
