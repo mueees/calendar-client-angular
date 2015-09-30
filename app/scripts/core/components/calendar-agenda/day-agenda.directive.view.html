@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="mue-calendar-date" ng-class="{today: isToday(), weekend: isWeekend()}">
+            <p class="mue-calendar-date-number">
+                {{clrConfig.day.date | date: 'd'}}
+            </p>
+
+            <p>{{clrConfig.day.date | date: 'EEE MMM'}}</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <clr-event-agenda clr-config="event" ng-repeat="event in clrConfig.day.events"></clr-event-agenda>
+
+        <div class="mue-calendar-agenda-event-create" ng-click="createNew = true">
+            <span>Add new</span>
+        </div>
+
+        <clr-event-create-quick ng-if="createNew" clr-config="eventCreateQuickConfig"></clr-event-create-quick>
+    </div>
+</div>

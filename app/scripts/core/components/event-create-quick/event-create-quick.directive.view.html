@@ -1,0 +1,32 @@
+<div class="panel mue-panel mue-form-panel">
+    <form>
+
+        {{event | json}}
+        <div class="mue-form-group-content">
+            <div class="form-group">
+                <div class="form-control-icon">
+                    <i class="fa fa-user mue-icon"></i>
+                    <input type="text" name="title" class="form-control" placeholder="Title" ng-model="event.title">
+                </div>
+            </div>
+            <div class="form-group">
+                <select ng-model="event.calendarId" ng-options="calendar._id as calendar.name for calendar in calendars"></select>
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <div class="pull-left">
+                <button type="button" class="btn btn-neutral" ng-click="close()">Cancel</button>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-lagoon btn-action btn-sm" ng-click="edit()">
+                    <i class="fa fa-plus mue-icon"></i>
+                    <span>Edit</span>
+                </button>
+                <button type="submit" class="btn btn-banana btn-action btn-sm" ng-click="create()" ng-disabled="isDisabled()">
+                    <i class="fa fa-plus mue-icon"></i>
+                    <span>Create</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

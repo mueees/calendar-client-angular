@@ -7,31 +7,66 @@
             },
             templateUrl: 'app/scripts/core/components/calendar-agenda/calendar-agenda.directive.view.html',
             link: function (scope) {
+                scope.days = [];
 
                 scope.$watch('clrConfig', function () {
-                    var calendars = getCalendarIds();
+                    var calendars = _.map(scope.clrConfig.calendars, function (calendar) {
+                        return calendar._id;
+                    });
 
-                    if(calendars.length){
+                    if (calendars.length) {
                         ClrEventResource.find({
                             calendarIds: calendars,
                             start: scope.clrConfig.period.start,
                             end: scope.clrConfig.period.end
                         }).then(function (events) {
-                            console.log(events.plain());
+                            buildAgenda(events.plain());
                         });
+                    } else {
+                        buildAgenda([]);
                     }
                 }, true);
 
-                function getCalendarIds(){
-                    return _.map(scope.clrConfig.calendars, function (calendar) {
-                        return calendar._id;
-                    });
+                function buildAgenda(events) {
+                    scope.days = generateDays(scope.clrConfig.period.start, scope.clrConfig.period.end);
+                    populateEvents(events);
                 }
 
-                // http://proxy.mue.in.ua/api/calendar/event/find
-                // calendarIds: ["55bc78c551b1bbd6199578f4"]
-                // end: "2015-11-03T21:25:58.337Z"
-                // start: "2015-10-27T21:25:58.337Z"
+                function generateDays(startDate, endDate) {
+                    var result = [],
+                        start = new Date(startDate),
+                        end = new Date(endDate);
+
+                    while (start <= end) {
+                        result.push({
+                            date: new Date(start.getTime()),
+                            events: []
+                        });
+
+                        start.setDate(start.getDate() + 1);
+                    }
+
+                    return result;
+                }
+
+                function populateEvents(events) {
+                    var format = 'MMMM Do YYYY';
+
+                    _.each(scope.days, function (day) {
+                        var eventsForCurrentDay = _.filter(events, function (event) {
+                            return moment(day.date).format(format) == moment(event.start).format(format);
+                        });
+
+                        _.each(eventsForCurrentDay, function (event) {
+                            day.events.push({
+                                event: event,
+                                calendar: _.find(scope.clrConfig.calendars, {
+                                    _id: event.calendarId
+                                })
+                            });
+                        });
+                    });
+                }
             }
         };
     });
