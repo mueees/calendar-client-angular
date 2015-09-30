@@ -5,18 +5,32 @@
             calendars: calendars.plain() || []
         };
 
+        var start = new Date(),
+            end = moment(new Date()).add(7, 'd').toDate();
+
         $scope.dateSwitcherConfig = {
             type: 2,
-            start: new Date(),
-            end: moment(new Date()).add(7, 'd').toDate()
+            start: start,
+            end: end
         };
 
         $scope.$watch('calendarManagerConfig.calendars', function () {
-            var activeCalendars = _.filter($scope.calendarManagerConfig.calendars, {
+            $scope.calendarAgendaConfig.calendars = _.filter($scope.calendarManagerConfig.calendars, {
                 active: true
             });
-
-            console.log(activeCalendars);
         }, true);
+
+        $scope.$watch('dateSwitcherConfig', function (newConfig) {
+            $scope.calendarAgendaConfig.period.start = newConfig.start;
+            $scope.calendarAgendaConfig.period.end = newConfig.end;
+        }, true);
+
+        $scope.calendarAgendaConfig = {
+            calendars: [],
+            period: {
+                start: start,
+                end: end
+            }
+        };
     });
 })();

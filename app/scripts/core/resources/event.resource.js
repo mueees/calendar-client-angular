@@ -6,8 +6,7 @@
                 // signature is (name, operation, path, params, headers, elementToPost)
 
                 events.addRestangularMethod('create', 'post', 'create');
-                /*calendar.addRestangularMethod('edit', 'post', 'edit');
-                calendar.addRestangularMethod('all', 'get', 'all');*/
+                events.addRestangularMethod('find', 'post', 'find');
                 return events;
             });
         }).all('calendar/event');

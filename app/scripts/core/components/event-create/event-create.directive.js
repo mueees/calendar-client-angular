@@ -16,7 +16,7 @@ angular.module('clr.core.components.event-create')
             scope: {
                 clrConfig: '='
             },
-            link: function (scope, element) {
+            link: function (scope) {
                 var start = moment(new Date()).minutes(0).seconds(0).toDate();
 
                 scope.event = {
@@ -34,6 +34,12 @@ angular.module('clr.core.components.event-create')
 
                 scope.repeatEnd = false;
 
+                scope.$watch('repeatEnd', function (value) {
+                    if(!value){
+                        delete scope.event.repeatEnd;
+                    }
+                });
+
                 scope.repeatType = [
                     {
                         value: 1,
@@ -42,6 +48,14 @@ angular.module('clr.core.components.event-create')
                     {
                         value: 2,
                         name: 'Weekly'
+                    },
+                    {
+                        value: 3,
+                        name: 'Monthly'
+                    },
+                    {
+                        value: 4,
+                        name: 'Yearly'
                     }
                 ];
 
@@ -108,7 +122,19 @@ angular.module('clr.core.components.event-create')
                     }
                 };
 
+                scope.isDisabled = function () {
+                    return !isValid();
+                };
+
                 function isValid() {
+                    if (!scope.event.calendarId || !scope.event.start) {
+                        return false;
+                    }
+
+                    if (scope.event.repeatType == 2 && !scope.event.repeatDays.length) {
+                        return false;
+                    }
+
                     return true;
                 }
             }

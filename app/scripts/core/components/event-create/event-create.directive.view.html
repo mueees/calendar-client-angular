@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-banana btn-action btn-sm" ng-click="create()">
+                        <button type="submit" class="btn btn-banana btn-action btn-sm" ng-click="create()" ng-disabled="isDisabled()">
                             <i class="fa fa-plus mue-icon"></i>
                             <span>Create</span>
                         </button>
@@ -79,9 +79,9 @@
                         <div ng-show="event.repeatType == 2">
                             <div ng-repeat="day in days">
                                 <label>
-                                    {{day.name}}
                                     <input value="{{day.value}}" type="checkbox"
                                            ng-click="toggleDaysSelection(day.value)">
+                                    {{day.name}}
                                 </label>
                             </div>
                         </div>
@@ -106,12 +106,10 @@
                                        ng-model="event.repeatEnd"
                                        is-open="endDatePicker.opened"
                                         />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="messages"></div>
     </form>
 </div>
