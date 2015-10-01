@@ -136,6 +136,37 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     "Seed directive"
   );
 
+
+  $templateCache.put('src/core/modal/confirm-modal.view.html',
+    "<div class=\"modal-header\">\r" +
+    "\n" +
+    "    <button type=\"button\" class=\"close\">\r" +
+    "\n" +
+    "        <span>X</span></button>\r" +
+    "\n" +
+    "    <h4 class=\"modal-title\">\r" +
+    "\n" +
+    "        Confirm\r" +
+    "\n" +
+    "    </h4>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div class=\"modal-body\">\r" +
+    "\n" +
+    "    {{text}}\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div class=\"modal-footer\">\r" +
+    "\n" +
+    "    <button type=\"button\" class=\"btn btn-default\" ng-click=\"cancel()\">{{decline}}</button>\r" +
+    "\n" +
+    "    <button type=\"button\" class=\"btn btn-lagoon btn-action\" ng-click=\"ok()\">{{accept}}</button>\r" +
+    "\n" +
+    "</div>"
+  );
+
 }]);
 
 (function(){
@@ -175,6 +206,11 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     angular.module('mue.core.error-handler', [
         'mue.template',
         'angular-growl'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.modal', [
+        'mue.template'
     ]);
 })();
 (function () {
@@ -239,6 +275,26 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
         return {
             handleScriptError: handleScriptError
         };
+    }]);
+})();
+(function(){
+    angular.module('mue.core.modal').factory('ConfirmModal', ['$modal', function ($modal) {
+
+        function open(data){
+            return $modal.open({
+                templateUrl: 'src/core/modal/confirm-modal.view.html',
+                controller: 'ConfirmModalController',
+                resolve: {
+                    data: function () {
+                        return data;
+                    }
+                }
+            });
+        }
+
+        return {
+            open: open
+        }
     }]);
 })();
 (function () {
@@ -867,6 +923,19 @@ angular.module('mue.core.components.seed')
             templateUrl: 'src/core/components/seed/seed.directive.html'
         }
     });
+(function(){
+    angular.module('mue.core.modal').controller('ConfirmModalController', ['$scope', '$modalInstance', 'data', function ($scope, $modalInstance, data) {
+        $scope.ok = function() {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+        _.extend($scope, data);
+    }]);
+})();
 (function () {
     'use strict';
     angular.module('mue.core.resources').factory('MueUserResource', ['$q', 'MueResource', function ($q, MueResource) {

@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <clr-event-agenda clr-config="event" ng-repeat="event in clrConfig.day.events"></clr-event-agenda>
+        <clr-event-agenda clr-config="{eventData: eventData, api: eventConfig}" ng-repeat="eventData in clrConfig.day.events"></clr-event-agenda>
 
         <div class="mue-calendar-agenda-event-create" ng-click="createNew = true">
             <span>Add new</span>

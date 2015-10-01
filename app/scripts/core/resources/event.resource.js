@@ -8,6 +8,7 @@
                 events.addRestangularMethod('create', 'post', 'create');
                 events.addRestangularMethod('find', 'post', 'find');
                 events.addRestangularMethod('edit', 'post', 'edit');
+                events.addRestangularMethod('deleteEvent', 'post', 'delete');
 
                 return events;
             });

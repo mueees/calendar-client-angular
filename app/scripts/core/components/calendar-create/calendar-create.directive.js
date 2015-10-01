@@ -36,6 +36,8 @@ angular.module('clr.core.components.calendar-create')
                 scope.isDisabled = function () {
                     return !scope.calendar.name;
                 };
+
+                element.find('input')[0].focus();
             }
         };
     });

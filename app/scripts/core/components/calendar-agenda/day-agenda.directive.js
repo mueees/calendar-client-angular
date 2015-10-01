@@ -19,6 +19,14 @@
                     return (momentDate.toDate().getDay() === 6) || (momentDate.toDate().getDay() === 0);
                 };
 
+                scope.eventConfig = {
+                    deleteEvent: function (id) {
+                        _.remove(scope.clrConfig.day.events, function (eventData) {
+                            return eventData.event._id == id || eventData.event.rawId == id;
+                        });
+                    }
+                };
+
                 scope.eventCreateQuickConfig = {
                     date: scope.clrConfig.day.date,
                     create: function (data) {

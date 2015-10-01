@@ -1,11 +1,16 @@
 <div class="panel mue-panel mue-calendar-agenda-event mue-calendar-color-lagoon">
     <div class="panel-body">
-        <div class="mue-calendar-agenda-event-title">{{clrConfig.event.title}}</div>
-        <div class="mue-calendar-agenda-event-description">{{clrConfig.event.description}}</div>
+        <div class="mue-calendar-agenda-event-title">{{clrConfig.eventData.event.title}}</div>
+        <div class="mue-calendar-agenda-event-description">{{clrConfig.eventData.event.description}}</div>
 
-        <div ng-if="clrConfig.event.isAllDay">
+        <div ng-if="clrConfig.eventData.event.isAllDay">
             <i class="fa fa-circle-thin mue-icon"></i>
             All day
+        </div>
+
+        <div ng-if="!clrConfig.eventData.event.isAllDay">
+            <i class="fa fa-clock-o mue-icon"></i>
+            {{clrConfig.eventData.event.start | date : 'HH:mm'}} - {{clrConfig.eventData.event.end | date : 'HH:mm'}}
         </div>
 
         <div class="mue-calendar-agenda-event-actions">

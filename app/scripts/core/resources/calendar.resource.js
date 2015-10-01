@@ -8,6 +8,7 @@
                 calendar.addRestangularMethod('create', 'post', 'create');
                 calendar.addRestangularMethod('edit', 'post', 'edit');
                 calendar.addRestangularMethod('all', 'get', 'all');
+                calendar.addRestangularMethod('deleteCalendar', 'post', 'delete');
                 return calendar;
             });
         }).all('calendar/calendar');

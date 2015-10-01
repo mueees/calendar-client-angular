@@ -1,5 +1,5 @@
 angular.module('clr.core.components.calendar-manager')
-    .directive('clrCalendarManager', function (ClrCalendarResource, $timeout) {
+    .directive('clrCalendarManager', function (ClrCalendarResource, ConfirmModal) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/calendar-manager/calendar-manager.directive.view.html',
@@ -9,12 +9,20 @@ angular.module('clr.core.components.calendar-manager')
             link: function (scope, element) {
                 scope.title = 'My calendars';
 
-                function deleteHandler() {
-                    console.log('delete handler');
-                }
-
-                function settingHandler() {
-                    console.log('setting handler');
+                function deleteHandler(calendar) {
+                    ConfirmModal.open({
+                        text: 'Do you want to delete calendar ?',
+                        accept: 'Delete',
+                        decline: 'Cancel'
+                    }).result.then(function () {
+                            ClrCalendarResource.deleteCalendar({
+                                _id: calendar._id
+                            }).then(function () {
+                                _.remove(scope.listConfig.items, {
+                                    _id: calendar._id
+                                });
+                            });
+                        });
                 }
 
                 function clickHandler(item) {
@@ -34,10 +42,6 @@ angular.module('clr.core.components.calendar-manager')
                     {
                         handler: deleteHandler,
                         icon: 'trash'
-                    },
-                    {
-                        handler: settingHandler,
-                        icon: 'gear'
                     }
                 ];
 
