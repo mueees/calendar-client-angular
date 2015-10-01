@@ -7,10 +7,13 @@ angular.module('clr.core.components.event-create-quick')
                 clrConfig: '='
             },
             link: function (scope, element) {
+                var start = scope.clrConfig.date || new Date();
+                start = moment(start).minutes(0).seconds(0).toDate();
+
                 scope.event = {
                     title: '',
-                    start: scope.clrConfig.date || new Date(),
-                    end: scope.clrConfig.date || new Date(),
+                    start:start,
+                    end: moment(start).add(1, 'hours').toDate(),
                     calendarId: null,
                     isAllDay: true,
                     isRepeat: false
@@ -38,6 +41,7 @@ angular.module('clr.core.components.event-create-quick')
 
                 scope.edit = function () {
                     EventStorage.storeEventForEdit(scope.event);
+
                     $state.go('app.event.create');
                 };
 

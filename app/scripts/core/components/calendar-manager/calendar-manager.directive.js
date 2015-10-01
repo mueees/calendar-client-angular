@@ -21,6 +21,10 @@ angular.module('clr.core.components.calendar-manager')
                                 _.remove(scope.listConfig.items, {
                                     _id: calendar._id
                                 });
+
+                                _.remove(scope.clrConfig.calendars, {
+                                    _id: calendar._id
+                                });
                             });
                         });
                 }

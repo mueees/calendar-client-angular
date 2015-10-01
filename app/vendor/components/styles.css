@@ -510,6 +510,12 @@ mue-date-viewer {
 mue-date-switcher {
   display: inline-block;
 }
+mue-date-switcher .mue-date-switcher-today {
+  margin-right: 15px;
+}
+mue-date-switcher .mue-date-switcher-navigation {
+  margin-right: 5px;
+}
 
 mue-calendar-manager .mue-list-group-flat .list-group-item {
   cursor: pointer;

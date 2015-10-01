@@ -1,7 +1,7 @@
 // day-agenda.directive
 
 (function () {
-    angular.module('clr.core.components.calendar-agenda').directive('clrDayAgenda', function () {
+    angular.module('clr.core.components.calendar-agenda').directive('clrDayAgenda', function ($rootScope, CLR_CALENDAR_AGENDA) {
         return {
             restrict: 'E',
             scope: {
@@ -24,8 +24,16 @@
                         _.remove(scope.clrConfig.day.events, function (eventData) {
                             return eventData.event._id == id || eventData.event.rawId == id;
                         });
+
+                        $rootScope.$broadcast(CLR_CALENDAR_AGENDA.events.deleteEvent, id);
                     }
                 };
+
+                scope.$on(CLR_CALENDAR_AGENDA.events.deleteEvent, function (event, id) {
+                    _.remove(scope.clrConfig.day.events, function (eventData) {
+                        return eventData.event._id == id || eventData.event.rawId == id;
+                    });
+                });
 
                 scope.eventCreateQuickConfig = {
                     date: scope.clrConfig.day.date,
