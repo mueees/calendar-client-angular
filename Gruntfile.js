@@ -160,7 +160,7 @@ module.exports = function (grunt) {
                     prefix: '.',
                     relative: true,
                     scripts: {
-                        libs: changeRootFolder(userConfig.vendor_files.js, 'app/vendor', '<%= build_dir %>/app/vendor'),
+                        libs: changeRootFolder(userConfig.vendor_files.js, 'app/', '<%= build_dir %>/app/'),
                         templates: '<%= build_dir %>/app/scripts/clr.templates.js',
                         app: changeRootFolder(userConfig.app_files.js.app, 'app/scripts', '<%= build_dir %>/app/scripts')
                     },
