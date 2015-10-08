@@ -1,21 +1,33 @@
 (function () {
     'use strict';
     angular.module('clr.core.resources').factory('ClrEventResource', function ($q, MueResource) {
-        var events = MueResource.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.addElementTransformer('calendar/event', true, function (events) {
-                // signature is (name, operation, path, params, headers, elementToPost)
+        var Event = MueResource.withConfig(function (RestangularConfigurer) {
 
-                events.addRestangularMethod('create', 'post', 'create');
-                events.addRestangularMethod('find', 'post', 'find');
-                events.addRestangularMethod('edit', 'post', 'edit');
-                events.addRestangularMethod('deleteEvent', 'post', 'delete');
+        });
 
-                return events;
-            });
-        }).all('calendar/event');
+        return {
+            create: function (data) {
+                var event = Event.one('calendar/events');
+                _.assign(event, data);
 
-        // http://proxy.mue.in.ua/api/calendar/event/get/55d31c8abd59338538e9d472
+                return event.put();
+            },
+            find: function (data) {
+                return Event.all('calendar/events/find').post(data);
+            },
+            deleteEvent: function (id) {
+                return Event.one('calendar/events/' + id).remove();
+            },
+            get: function (eventId) {
+                return Event.one('calendar/events/' + eventId).get();
+            },
+            edit: function (data) {
+                var _id = data._id;
 
-        return events;
+                delete data._id;
+
+                return Event.all('calendar/events/' + _id).post(data);
+            }
+        };
     });
 })();

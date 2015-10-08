@@ -15,9 +15,7 @@ angular.module('clr.core.components.calendar-manager')
                         accept: 'Delete',
                         decline: 'Cancel'
                     }).result.then(function () {
-                            ClrCalendarResource.deleteCalendar({
-                                _id: calendar._id
-                            }).then(function () {
+                            ClrCalendarResource.deleteCalendar(calendar._id).then(function () {
                                 _.remove(scope.listConfig.items, {
                                     _id: calendar._id
                                 });

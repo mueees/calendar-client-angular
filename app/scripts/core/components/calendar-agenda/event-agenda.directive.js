@@ -17,9 +17,7 @@
                         accept: 'Delete',
                         decline: 'Cancel'
                     }).result.then(function () {
-                            ClrEventResource.deleteEvent({
-                                _id: eventId
-                            }).then(function () {
+                            ClrEventResource.deleteEvent(eventId).then(function () {
                                 scope.clrConfig.api.deleteEvent(eventId);
                             });
                         });

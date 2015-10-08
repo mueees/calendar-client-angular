@@ -29,7 +29,7 @@
                         return ClrCalendarResource.all();
                     },
                     event: function (ClrEventResource, $stateParams) {
-                        return ClrEventResource.one('get/' + $stateParams.id).get();
+                        return ClrEventResource.get($stateParams.id);
                     }
                 }
             });

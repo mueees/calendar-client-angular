@@ -1,18 +1,30 @@
 (function () {
     'use strict';
     angular.module('clr.core.resources').factory('ClrCalendarResource', function ($q, MueResource) {
-        var calendars = MueResource.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.addElementTransformer('calendar/calendar', true, function (calendar) {
-                // signature is (name, operation, path, params, headers, elementToPost)
+        var Calendar = MueResource.withConfig(function (RestangularConfigurer) {
 
-                calendar.addRestangularMethod('create', 'post', 'create');
-                calendar.addRestangularMethod('edit', 'post', 'edit');
-                calendar.addRestangularMethod('all', 'get', 'all');
-                calendar.addRestangularMethod('deleteCalendar', 'post', 'delete');
-                return calendar;
-            });
-        }).all('calendar/calendar');
+        });
 
-        return calendars;
+        return {
+            all: function () {
+                return Calendar.all('calendar/calendars').getList();
+            },
+            create: function (data) {
+                var calendar = Calendar.one('calendar/calendars');
+                _.assign(calendar, data);
+
+                return calendar.put();
+            },
+            edit: function (data) {
+                var _id = data._id;
+
+                delete data._id;
+
+                return Calendar.all('calendar/calendars/' + _id).post(data);
+            },
+            deleteCalendar: function (id) {
+                return Calendar.one('calendar/calendars/' + id).remove();
+            }
+        };
     });
 })();
