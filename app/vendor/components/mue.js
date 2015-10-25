@@ -237,7 +237,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     'use strict';
     angular.module('mue.core.resources').factory('MueResource', ['Restangular', function (Restangular) {
         return Restangular.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.setBaseUrl('http://proxy.mue.in.ua/api');
+            RestangularConfigurer.setBaseUrl('http://localhost:10002/api');
         });
     }]);
 })();
