@@ -20,7 +20,12 @@
                             start: scope.clrConfig.period.start,
                             end: scope.clrConfig.period.end
                         }).then(function (events) {
-                            buildAgenda(events.plain());
+                            // todo: this's hack! Sometimes event = undefined
+                            if (events) {
+                                buildAgenda(events.plain());
+                            } else {
+                                buildAgenda([]);
+                            }
                         });
                     } else {
                         buildAgenda([]);
