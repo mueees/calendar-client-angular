@@ -1,14 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('clr.viewport').config(function ($stateProvider, mueAuthentication) {
+    angular.module('clr.viewport').config(function ($stateProvider) {
         $stateProvider.state('app', {
             abstract: true,
             url: '/app',
             templateUrl: 'app/scripts/pages/viewport/viewport.view.html',
             controller: 'ViewportController',
             resolve: {
-                user: mueAuthentication.initSession
+                user: function (mueAuthentication) {
+                    return mueAuthentication.initSession();
+                }
             }
         });
     });

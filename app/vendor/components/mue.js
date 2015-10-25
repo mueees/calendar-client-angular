@@ -235,11 +235,22 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 })();
 (function () {
     'use strict';
-    angular.module('mue.core.resources').factory('MueResource', ['Restangular', function (Restangular) {
-        return Restangular.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.setBaseUrl('http://proxy.mue.in.ua/api');
-        });
-    }]);
+    angular.module('mue.core.resources').provider('MueResource', function () {
+        var baseUrl = 'http://proxy.mue.in.ua/api';
+
+        return {
+            setBaseUrl: function (url) {
+                if (url) {
+                    baseUrl = url;
+                }
+            },
+            $get: ['Restangular', function (Restangular) {
+                return Restangular.withConfig(function (RestangularConfigurer) {
+                    RestangularConfigurer.setBaseUrl(baseUrl);
+                })
+            }]
+        };
+    });
 })();
 /**
  * @ngdoc service
