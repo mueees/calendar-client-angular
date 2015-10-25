@@ -6,7 +6,10 @@
             abstract: true,
             url: '/app',
             templateUrl: 'app/scripts/pages/viewport/viewport.view.html',
-            controller: 'ViewportController'
+            controller: 'ViewportController',
+            resolve: {
+                user: mueAuthentication.initSession
+            }
         });
     });
 })();
