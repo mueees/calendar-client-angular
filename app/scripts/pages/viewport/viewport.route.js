@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('clr.viewport').config(function ($stateProvider) {
+    angular.module('clr.viewport').config(function ($stateProvider, mueAuthentication) {
         $stateProvider.state('app', {
             abstract: true,
             url: '/app',
