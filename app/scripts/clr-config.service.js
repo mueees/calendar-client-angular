@@ -10,7 +10,7 @@
             productionOrigin = 'http://proxy.mue.in.ua',
 
             developmentOauth = '4eb3a945-5c16-2d88-1235-a5c7067a7873',
-            productionOauth = '775e84`58-587d-e1bb-6450-5b205b202303';
+            productionOauth = '775e8458-587d-e1bb-6450-5b205b202303';
 
         function isProduction() {
             return config.environment == 'production';
