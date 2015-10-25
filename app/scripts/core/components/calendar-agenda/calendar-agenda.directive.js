@@ -21,7 +21,7 @@
                             end: scope.clrConfig.period.end
                         }).then(function (events) {
                             // todo: this's hack! Sometimes event = undefined
-                            if (events) {
+                            if (events && events.plain) {
                                 buildAgenda(events.plain());
                             } else {
                                 buildAgenda([]);
