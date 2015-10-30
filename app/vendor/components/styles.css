@@ -40,6 +40,10 @@ ul li {
   list-style: none;
 }
 
+.mue-no-padding {
+  padding: 0 !important;
+}
+
 .mue-icon + input {
   padding: 6px 12px 6px 26px;
 }
@@ -319,6 +323,9 @@ ul li {
   border-width: 2px;
   min-height: 30px;
 }
+.mue-panel.mue-panel-dark {
+  background: #364347;
+}
 .mue-panel.mue-panel-dark .panel-heading {
   background: #2b3638;
   color: #b2c6cd;
@@ -529,6 +536,9 @@ ul li {
 .mue-list-group.mue-list-group-dark {
   color: #93a4aa;
 }
+.mue-list-group.mue-list-group-dark a {
+  color: #93a4aa;
+}
 .mue-list-group.mue-list-group-dark .btn {
   color: #93a4aa;
 }
@@ -586,38 +596,19 @@ mue-calendar-manager .mue-list-group-flat .list-group-item {
   cursor: pointer;
 }
 
-.mue-list-rss .list-group-item .mue-list-rss-close {
-  padding: 15px 0;
-}
-.mue-list-rss .list-group-item .list-group-item-description {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  text-overflow: ellipsis;
-}
-.mue-list-rss .list-group-item:hover {
-  cursor: pointer;
-  background: #d6e1e5;
-}
-.mue-list-rss .list-group-item:hover .mue-list-rss-menu {
-  display: block;
-}
-.mue-list-rss .mue-list-rss-menu {
-  position: absolute;
-  background: #d6e1e5;
-  right: 0;
+.mue-sidebar {
+  background: #364347;
+  position: fixed;
   top: 0;
-  height: 100%;
-  padding: 10px;
-  display: none;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
 }
-.mue-list-rss .mue-list-rss-menu span {
-  padding: 0 5px;
+.mue-sidebar .mue-sidebar-wrapper {
+  padding: 0 20px;
 }
-.mue-list-rss .mue-list-rss-description {
-  font-size: 12px;
-  color: #93a4aa;
+.mue-sidebar .mue-panel-dark {
+  border: none;
 }
 
 mue-header {
@@ -634,82 +625,6 @@ mue-header .mue-brand {
 }
 mue-header .mue-header-menu {
   margin: 11px 0 0 0;
-}
-
-.rss-content {
-  margin-left: 300px;
-  padding: 0 30px;
-}
-
-.rss-sidebar {
-  background: #364347;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 300px;
-  bottom: 0;
-  overflow: auto;
-}
-.rss-sidebar .rss-sidebar-wrapper {
-  padding: 0 20px;
-}
-.rss-sidebar .mue-panel-dark {
-  border: none;
-}
-
-.rss-category-card .list-group-item {
-  padding: 10px;
-}
-.rss-category-card .rss-category-card-unread {
-  position: absolute;
-  right: 7px;
-  top: 13px;
-  font-size: 12px;
-}
-.rss-category-card .rss-category-card-title {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  width: 91%;
-  vertical-align: bottom;
-}
-
-.rss-group-links a {
-  color: #93a4aa;
-}
-.rss-group-links a:hover {
-  color: white;
-}
-.rss-group-links li {
-  margin-bottom: 10px;
-}
-
-.rss-header {
-  background: url("../example/img/rss-header.jpg") no-repeat;
-  height: 160px;
-}
-.rss-header .rss-header-user {
-  position: absolute;
-  top: 20px;
-  left: 65px;
-  font-size: 16px;
-}
-.rss-header .rss-header-group-links {
-  position: absolute;
-  top: 65px;
-  left: 20px;
-}
-.rss-header .rss-header-group-links a {
-  color: #5e696d;
-  font-size: 12px;
-}
-.rss-header .rss-header-group-links a:hover {
-  color: white;
-}
-.rss-header .rss-header-group-links li {
-  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map */
