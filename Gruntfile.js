@@ -8,7 +8,7 @@ module.exports = function (grunt) {
             'api-host': 'localhost',
             'api-port': '8008',
             'host': 'localhost',
-            'port': '9002',
+            'port': '9003',
             'skip-tests': ''
         };
 
@@ -29,9 +29,14 @@ module.exports = function (grunt) {
         path = require('path');
 
     var config = require('./package.json').config;
+
     _.forEach(config, function (value, key) {
         grunt.config(key, value);
     });
+
+    if (grunt.cli.tasks[0] == 'release') {
+        grunt.config('core', grunt.config('local'));
+    }
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
@@ -92,7 +97,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('release', 'Main task for production, to create minified app', [
         'validation-wrapper',
-        'tests-wrapper',
         'clean:all',
         'sass:release',
         'copy',
@@ -112,7 +116,7 @@ module.exports = function (grunt) {
         loadGruntTasks: {
             pattern: ['grunt-*'],
             config: require('./package.json'),
-            scope: 'devDependencies'
+            scope: (grunt.cli.tasks[0] == 'release') ? ['dependencies'] : ['dependencies', 'devDependencies']
         }
     });
 };
