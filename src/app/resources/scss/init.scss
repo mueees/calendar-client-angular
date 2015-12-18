@@ -1,0 +1,4 @@
+@import "variables";
+@import "../../vendor/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "<%= core %>/resources/scss/init";
+@import "partials/all";
