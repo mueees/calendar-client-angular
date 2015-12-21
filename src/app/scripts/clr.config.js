@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    angular.module('clr').config(function (clrConfigProvider, MueResourceProvider, $urlRouterProvider, mueAuthUserResourceProvider, mueAuthenticationProvider) {
+    angular.module('clr').config(function (clrConfigProvider, MueResourceProvider, $urlRouterProvider, mueAuthProxyProvider, mueAuthenticationProvider) {
         $urlRouterProvider.otherwise("app/main");
 
-        mueAuthUserResourceProvider.setOauthKey(clrConfigProvider.get('oauthKey'));
+        mueAuthProxyProvider.setOauthKey(clrConfigProvider.get('oauthKey'));
 
-        mueAuthUserResourceProvider.config({
+        mueAuthProxyProvider.config({
             origin: clrConfigProvider.get('origin')
         });
 
